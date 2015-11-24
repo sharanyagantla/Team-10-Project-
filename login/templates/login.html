@@ -1,7 +1,11 @@
 
+
 {% extends "base.html" %}
 
 {% block content %}
+
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}" />
 
  	{% if form.errors %}
  		<p class="error"> sorry, wrong username and pasword</p>
@@ -24,4 +28,3 @@
     <h3>schedule</h3>
 
 {% endblock %}
-
