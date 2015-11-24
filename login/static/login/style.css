@@ -1,4 +1,62 @@
 
-h2 {
+
+#userfield {
+	position: absolute;
+	top:60px;
+	left:50px;
+}
+
+
+#username {
+	position: absolute;
+	top:85px;
+	left:50px;
+}
+
+#passwordfield {
+	position: absolute;
+	top:110px;
+	left:50px;
+}
+
+#password {
+	position: absolute;
+	top:130px;
+	left:50px;
+}
+
+#submittype {
+	position: absolute;
+	top:160px;
+	left:50px;
+}
+
+#registerblock {
+	position: absolute;
+	top:180px;
+	left:50px;
+}
+
+h1 {
+	position: absolute;
+	top:-5px;
+	left:50px;
+}
+
+
+
+#leader {
+	position: absolute;
+	top:1px;
+	left:500px;
 	color: green;
+}
+
+
+
+#schedule {
+	position: absolute;
+	top:1px;
+	left:800px;
+	color: blue;
 }
