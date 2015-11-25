@@ -15,13 +15,19 @@ class Match(models.Model):
 	team_1 = models.ForeignKey('Team', related_name = 'team1')
 	team_2 = models.ForeignKey('Team', related_name = 'team2')
 	pub_date = models.DateTimeField('date of match')
+	
 	def __str__(self):
 		return self.match_name
 
-
 class Player(models.Model) :
 	team = models.ForeignKey('Team')
+	match = models.ForeignKey('Match')
 	player_name = models.CharField(max_length=200)
-
+	points = models.IntegerField(default = 0)
 	def __str__(self):              # __unicode__ on Python 2
 		return self.player_name
+
+
+
+
+

@@ -4,10 +4,7 @@
 
 {% block content %}
 
-	{% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href="{% static 'login/loggedin.css' %}" />
-
-	<h4> Hiii {{full_name}}!!!!!</h4>
-	<p><a href="/accounts/logout/">logout</a></p>
+	<h2> Hi {{full_name}} you are now logged in! </h2>
+	<p>click <a href="/accounts/logout/">here</a> to logout</p>
 
 {% endblock %}

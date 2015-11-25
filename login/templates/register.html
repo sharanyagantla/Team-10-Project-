@@ -2,30 +2,9 @@
 
 {% block content %}
 
-	{% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href="{% static 'login/formstyle.css' %}" />
-
     <h2>Register</h2>
-    <form action="/accounts/register/" method="post"> {% csrf_token %} 
-	    <div id = "username">
-	    	<p>Username: {{form.username}}</p>
-	    </div>>
-	    <div id = "first_name">
-	    	<p>First Name: {{form.first_name}}</p>
-	    </div>>
-	    <div id = "last_name">
-	    	<p>Last Name :{{form.last_name}}</p>
-	    </div>>
-	    <div id = "email">
-	    	<p>Email : {{form.email}}</p>
-	    </div>>
-	    <div id = "password1">
-	    	<p>Password: {{form.password1}}</p>
-	    </div>> 
-	    <div id = "password2">
-	    	<p>Re-type Password: {{form.password2}}</p>
-	    </div>> 
-    <input id = "button" type="submit" value="Register" />   
+    <form action="/accounts/register/" method="post">{% csrf_token %} {{form}} 
+    <input type="submit" value="Register" />   
     </form>
 
 {% endblock %}
