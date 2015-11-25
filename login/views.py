@@ -7,6 +7,11 @@ from django.contrib import auth
 # from django.contrib.auth.models import User
 from django.http import HttpResponse
 from forms import MyRegistrationForm
+from django.http import HttpResponse
+from django.template import loader
+from django.template import RequestContext
+import datetime
+
 
 
 def login(request):
@@ -58,3 +63,11 @@ def register_user(request):
 
 def register_sucesss(request):
 	return render_to_response('register_sucesss.html')
+
+
+def hello_world(request):
+    context = {}
+    context['current_time'] = datetime.datetime.now()
+    template = loader.get_template('loggedin.html')
+    data = RequestContext(request, context)
+    return HttpResponse(template.render(data))	

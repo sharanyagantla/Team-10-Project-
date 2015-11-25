@@ -1,16 +1,29 @@
 #leader {
 	position: absolute;
-	top:-5px;
-	left:400px;
+	bottom:10px;
+	right:40px;
 	color: green;
 }
 
+#team1 {
+	position: absolute;
+	top:-5px;
+	left:300px;
+	color: red;
+}
+
+#team2 {
+	position: absolute;
+	top:-5px;
+	left:500px;
+	color: red;
+}
 
 
 #schedule {
 	position: absolute;
 	top:-5px;
-	left:700px;
+	left:800px;
 	color: blue;
 }
 
