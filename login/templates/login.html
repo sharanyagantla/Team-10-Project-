@@ -13,18 +13,18 @@
  	<div>
  	<h1>Login</h1>
 	    <form action="/accounts/auth/" method="post"> {% csrf_token %} 
-	    	<label for= "username" >user name:</label>
+	    	<label id = "userfield" for= "username" >user name:</label>
 	    	<input type="text" name="username" value="" id="username">
-	    	<label for="password">password:</label>
+	    	<label id = "passwordfield" for="password">password:</label>
 	    	<input type="password" name="password" value="" id="password">
-	    	<input type="submit" value="login" />
+	    	<input id = "submittype" type="submit" value="login" />
 	    </form>
     </div>
-    <div>
+    <div id = "registerblock">
     	<p>new user?</p>
     	<p><a href="/accounts/register/"> <button>Register</button> </a></p>
     </div>
-    <h2>leader board</h2>
-    <h3>schedule</h3>
+    <h2 id = "leader">leader board</h2>
+    <h2 id = "schedule">schedule</h2>
 
 {% endblock %}

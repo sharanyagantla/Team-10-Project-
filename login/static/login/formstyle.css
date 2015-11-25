@@ -1,0 +1,48 @@
+h2 {
+	position: absolute;
+	top:-3px;
+	left:120px;
+}
+
+
+#username {
+	position: absolute;
+	top:90px;
+	left:50px;
+}
+
+#first_name {
+	position: absolute;
+	top:120px;
+	left:50px;
+}
+
+#last_name {
+	position: absolute;
+	top:150px;
+	left:50px;
+}
+
+#email {
+	position: absolute;
+	top:180px;
+	left:50px;
+}
+
+#password1 {
+	position: absolute;
+	top:210px;
+	left:50px;
+}
+
+#password2 {
+	position: absolute;
+	top:240px;
+	left:50px;
+}
+
+#button {
+	position: absolute;
+	top:290px;
+	left:50px;	
+}
