@@ -4,7 +4,19 @@
 
 {% block content %}
 
+<<<<<<< HEAD
 	<h2> Hi {{full_name}} you are now logged in! </h2>
 	<p>click <a href="/accounts/logout/">here</a> to logout</p>
+=======
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'login/loggedin.css' %}" />
+
+	<h4> Hiii {{full_name}}!!!!!</h4>
+	<p><a href="/accounts/logout/">logout</a></p>
+	<h4 id = "team1">Team 1</h4>
+	<h4 id = "team2">Team 2</h4>
+	<h5 id = "leader">Current time: {{current_time}}</h5>
+    <h2 id = "schedule">schedule</h2>
+>>>>>>> 63db62f4c73dc5f00ed00e4a89f79f9634d8944c
 
 {% endblock %}

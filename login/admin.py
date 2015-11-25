@@ -1,4 +1,5 @@
 from django.contrib import admin
+<<<<<<< HEAD
 
 from .models import Player, Team , Match ,AsignPoints
 
@@ -38,3 +39,5 @@ admin.site.register(Match, MatchAdmin)
 
 
 # Register your models here.
+=======
+>>>>>>> 63db62f4c73dc5f00ed00e4a89f79f9634d8944c

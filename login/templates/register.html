@@ -2,9 +2,60 @@
 
 {% block content %}
 
+<<<<<<< HEAD
     <h2>Register</h2>
     <form action="/accounts/register/" method="post">{% csrf_token %} {{form}} 
     <input type="submit" value="Register" />   
+=======
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'login/formstyle.css' %}" />
+
+    <h2>Register</h2>
+    <form action="/accounts/register/" method="post"> {% csrf_token %} 
+	    
+	    <div id = "usernametext">
+	    	<p>Username:</p>
+	    </div>>
+	    <div id = "username">
+	    	<p>{{form.username}}</p>
+	    </div>>
+
+	    <div id = "first_nametext">
+	    	<p>First Name:</p>
+	    </div>>
+	    <div id = "first_name">
+	    	<p>{{form.first_name}}</p>
+	    </div>>
+
+	    <div id = "last_nametext">
+	    	<p>Last Name :</p>
+	    </div>>
+	    <div id = "last_name">
+	    	<p>{{form.last_name}}</p>
+	    </div>>
+
+	    <div id = "emailtext">
+	    	<p>Email :</p>
+	    </div>>
+	    <div id = "email">
+	    	<p>{{form.email}}</p>
+	    </div>>
+
+	    <div id = "password1text">
+	    	<p>Password:</p>
+	    </div>>	    
+	    <div id = "password1">
+	    	<p>{{form.password1}}</p>
+	    </div>> 
+
+	    <div id = "password2text">
+	    	<p>Re-type Password:</p>
+	    </div>> 	    
+	    <div id = "password2">
+	    	<p>{{form.password2}}</p>
+	    </div>> 
+    <input id = "button" type="submit" value="Register" />   
+>>>>>>> 63db62f4c73dc5f00ed00e4a89f79f9634d8944c
     </form>
 
 {% endblock %}

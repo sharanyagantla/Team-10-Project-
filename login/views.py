@@ -7,9 +7,17 @@ from django.contrib import auth
 # from django.contrib.auth.models import User
 from django.http import HttpResponse
 from forms import MyRegistrationForm
+<<<<<<< HEAD
 from django.template import loader
 from django.template import RequestContext
 # import datatime
+=======
+from django.http import HttpResponse
+from django.template import loader
+from django.template import RequestContext
+import datetime
+
+>>>>>>> 63db62f4c73dc5f00ed00e4a89f79f9634d8944c
 
 
 def login(request):
@@ -17,6 +25,7 @@ def login(request):
 	c.update(csrf(request))
 	return render_to_response('login.html' , c)
 
+<<<<<<< HEAD
 def Hello(request):
 	c = {}
 	var = "attempt"
@@ -25,6 +34,8 @@ def Hello(request):
 	data = RequestContext(request,c)
 	return HttpResponse(template.render(data))
 
+=======
+>>>>>>> 63db62f4c73dc5f00ed00e4a89f79f9634d8944c
 
 def auth_view(request):
 	username = request.POST.get('username' , '')
@@ -70,5 +81,15 @@ def register_user(request):
 def register_sucesss(request):
 	return render_to_response('register_sucesss.html')
 
+<<<<<<< HEAD
 # def login(request):
 #     return HttpResponse("Hello, world. You're at the polls index.")
+=======
+
+def hello_world(request):
+    context = {}
+    context['current_time'] = datetime.datetime.now()
+    template = loader.get_template('loggedin.html')
+    data = RequestContext(request, context)
+    return HttpResponse(template.render(data))	
+>>>>>>> 63db62f4c73dc5f00ed00e4a89f79f9634d8944c

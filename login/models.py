@@ -1,4 +1,5 @@
 from django.db import models
+<<<<<<< HEAD
 import datetime
 from django.db import models
 from django.utils import timezone
@@ -42,3 +43,5 @@ class AsignPoints(models.Model) :
 
 
 # Create your models here.
+=======
+>>>>>>> 63db62f4c73dc5f00ed00e4a89f79f9634d8944c
