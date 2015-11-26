@@ -1,0 +1,42 @@
+#leader {
+	position: absolute;
+	bottom:10px;
+	right:40px;
+	color: green;
+}
+
+#team1 {
+	position: absolute;
+	top:-5px;
+	left:300px;
+	color: red;
+}
+
+#team2 {
+	position: absolute;
+	top:-5px;
+	left:500px;
+	color: red;
+}
+
+
+#schedule {
+	position: absolute;
+	top:-5px;
+	left:800px;
+	color: blue;
+}
+
+
+p{
+	position: absolute;
+	top:-3px;
+	right:50px;
+}
+
+h4{
+	position: absolute;
+	top:-9px;
+	right:150px;
+}
+
