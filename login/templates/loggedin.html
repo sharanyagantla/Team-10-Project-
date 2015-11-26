@@ -4,10 +4,6 @@
 
 {% block content %}
 
-
-	<h2> Hi {{full_name}} you are now logged in! </h2>
-	<p>click <a href="/accounts/logout/">here</a> to logout</p>
-
 	{% load staticfiles %}
 	<link rel="stylesheet" type="text/css" href="{% static 'login/loggedin.css' %}" />
 
@@ -15,17 +11,13 @@
 	<p><a href="/accounts/logout/">logout</a></p>
 	<h4 id = "team1">Team 1</h4>
 	<h4 id = "team2">Team 2</h4>
-	<h5 id = "leader">Current time: {{current_time}}</h5>
     <h2 id = "schedule">schedule</h2>
-    <p id = "matches"> 
-    	<div style = "display:flex">
-	       {% for object in match_name %}
-	            <li>{{ object.match_name }} -- {{object.pub_date }}</li>
-	       {% endfor %}
-	       <form>
-	       <input type="submit" value="select" />
-	   	   </form>
-	    </div>
-	</p>
+    <div id = "matches">
+    	<p>
+	    	{% for object in match_name %}
+	             <li>{{ object.match_name }} -- {{object.pub_date }}</li>
+	        {% endfor %}    		
+    	</p>
+    </div>
 
 {% endblock %}

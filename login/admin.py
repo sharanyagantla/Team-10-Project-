@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Player, Team , Match ,AsignPoints
+
+from login.models import Player, Team , Match ,AsignPoints
+
+
+
+admin.site.register(Player)
 
 class PlayerInLine(admin.TabularInline):
     model = Player
@@ -12,6 +17,8 @@ class TeamAdmin(admin.ModelAdmin):
     inlines = [PlayerInLine]
     search_fields = ['team_name']
 
+admin.site.register(Team, TeamAdmin)
+
 class PlayersInLine(admin.TabularInline):
     model = AsignPoints
 
@@ -20,10 +27,6 @@ class MatchAdmin(admin.ModelAdmin):
        (None,       {'fields': ['match_name','pub_date','team_1','team_2']}),
    ]
    inlines = [PlayersInLine]
-
-admin.site.register(Player)
-
-admin.site.register(Team, TeamAdmin)
 
 admin.site.register(Match, MatchAdmin)
 admin.site.register(AsignPoints)

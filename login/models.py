@@ -1,18 +1,10 @@
+from django.db import models
 import datetime
 from django.db import models
 from django.utils import timezone
 from django.db.models import Q
-from django.utils import timezone
-from django.contrib.auth.models import User
 
-class User(models.Model):
-	user = models.OneToOneField(User)
-	user_id = models.IntegerField(default = 0)
-	player1 = models.CharField(max_length=200)
-	player2 = models.CharField(max_length=200)
-	player3 = models.CharField(max_length=200)
-	player4 = models.CharField(max_length=200)
-	player5 = models.CharField(max_length=200)
+# Create your models here.
 
 class Team(models.Model):
 	team_name = models.CharField(max_length=200)
@@ -28,21 +20,12 @@ class Match(models.Model):
 	def __str__(self):
 		return self.match_name
 
-	def getid(self):
-		return self.id
-
-	def __str__(self):
-		return self.match_name
-
-	def test():
-		return 
-
-
 class Player(models.Model) :
 	team = models.ForeignKey('Team')
 	player_name = models.CharField(max_length=200)
 	def __str__(self):
 		return self.player_name
+
 
 class AsignPoints(models.Model) :
 	match = models.ForeignKey('Match')
@@ -54,10 +37,3 @@ class AsignPoints(models.Model) :
 		return self.match.match_name
 
 # ,limit_choices_to= Q(team_id=q[0].team_1_id) | Q(team_id=q[0].team_2_id)
-	playername = models.ForeignKey('Player')
-	match = models.ForeignKey('Match')
-	points = models.IntegerField(default = 0)
-
-	def __str__(self):
-		return self.match.match_name
-

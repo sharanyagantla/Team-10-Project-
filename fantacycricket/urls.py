@@ -16,16 +16,6 @@ Including another URLconf
 from django.conf.urls import include, url, patterns
 from django.contrib import admin
 
-# admin.autodiscover()
-# urlpatterns = [
-#     url(r'^admin/', include(admin.site.urls)),
-#     url(r'^hello/', 'articles.views.hello'),
-#     url(r'^hello_template/' , 'articles.views.hello_template'),
-#     url(r'^simple_hello/' , 'articles.views.simple_hello'),
-#     url(r'^', 'articles.views.home'),
-# ]
-
-
 urlpatterns = patterns('' ,
 	url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/auth/' , 'login.views.auth_view'),
@@ -35,5 +25,4 @@ urlpatterns = patterns('' ,
     url(r'^accounts/register/' , 'login.views.register_user'),
     url(r'^accounts/register_sucesss/' , 'login.views.register_sucesss'),
 	url(r'^accounts/login/', 'login.views.login'),
-    url(r'^accounts/loggedin/', 'login.views.hello_world'),
 )

@@ -1,25 +1,25 @@
 
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, render
 from django.http import HttpResponseRedirect
 from django.core.context_processors import csrf
 from django.contrib import auth
+# from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from forms import MyRegistrationForm
-from django.template import loader
-from django.template import RequestContext
-import datetime
 from login.models import Match
-from django.contrib import auth
-from django.contrib.auth.models import User
+from django.template import RequestContext, loader
+
 
 def login(request):
-	z= {}
-	z.update(csrf(request))
-	u = User.objects.all()
+	c= {}
+	c.update(csrf(request))
 	q = Match.objects.all()
+	# return render_to_response('login.html' , {c , 'match_name': q[0].match_name }  )
 	t = loader.get_template('login.html')
-	c = RequestContext(request, {'match_name': q})
-	return HttpResponse(t.render(c), content_type=z)
+	r = RequestContext(request, {'match_name': q  , 'user_names' : User.objects.all()} )
+	return HttpResponse(t.render(r), content_type=c)
+
 
 def auth_view(request):
 	username = request.POST.get('username' , '')
@@ -31,19 +31,23 @@ def auth_view(request):
 		return HttpResponseRedirect('/accounts/loggedin/')
 	else :
 		return HttpResponseRedirect('/accounts/invalid/')
+		
+		
 
 def invalied_login(request):
 	return render_to_response('invalied_login.html')
 
+	# def loggedin(request):
+	# return render_to_response('loggedin.html' ,{'full_name' : request.user.username})
+
 def loggedin(request):
-	z= {}
-	z.update(csrf(request))
+	c= {}
+	c.update(csrf(request))
 	q = Match.objects.all()
 	t = loader.get_template('loggedin.html')
-	c = RequestContext(request, {'match_name': q })
-	return HttpResponse(t.render(c), content_type=z)
-	return render_to_response('loggedin.html' ,
-		{'full_name' : request.user.username})
+	r = RequestContext(request, {'match_name': q , 'full_name' : request.user.username} )
+	return HttpResponse(t.render(r), content_type=c)
+
 
 def logout(request):
 	auth.logout(request)
@@ -68,11 +72,3 @@ def register_user(request):
 
 def register_sucesss(request):
 	return render_to_response('register_sucesss.html')
-
-def hello_world(request):
-    context = {}
-    context['current_time'] = datetime.datetime.now()
-    template = loader.get_template('loggedin.html')
-    data = RequestContext(request, context)
-    return HttpResponse(template.render(data))	
-
