@@ -39,10 +39,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'articles',
     'login',
-<<<<<<< HEAD
-=======
-    'playy',
->>>>>>> 63db62f4c73dc5f00ed00e4a89f79f9634d8944c
 )
 
 MIDDLEWARE_CLASSES = (

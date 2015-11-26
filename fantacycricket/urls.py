@@ -28,27 +28,12 @@ from django.contrib import admin
 
 urlpatterns = patterns('' ,
 	url(r'^admin/', include(admin.site.urls)),
-<<<<<<< HEAD
-    url(r'^accounts/login/', 'login.views.Hello'),
-	# url(r'^article/', include('articles.urls')),
-    # url(r'^accounts/login/', 'login.views.login'),
     url(r'^accounts/auth/' , 'login.views.auth_view'),
     url(r'^accounts/logout/' , 'login.views.logout'),
     url(r'^accounts/loggedin/', 'login.views.loggedin'),
     url(r'^accounts/invalid/' , 'login.views.invalied_login'),
     url(r'^accounts/register/' , 'login.views.register_user'),
     url(r'^accounts/register_sucesss/' , 'login.views.register_sucesss'),
-    
-    
-=======
-	# url(r'^article/', include('articles.urls')),
-    url(r'^accounts/login/', 'login.views.login'),
-    url(r'^accounts/auth/' , 'login.views.auth_view'),
-    url(r'^accounts/logout/' , 'login.views.logout'),
-   # url(r'^accounts/loggedin/', 'login.views.loggedin'),
+	url(r'^accounts/login/', 'login.views.login'),
     url(r'^accounts/loggedin/', 'login.views.hello_world'),
-    url(r'^accounts/invalid/' , 'login.views.invalied_login'),
-    url(r'^accounts/register/' , 'login.views.register_user'),
-    url(r'^accounts/register_sucesss/' , 'login.views.register_sucesss'),
->>>>>>> 63db62f4c73dc5f00ed00e4a89f79f9634d8944c
 )

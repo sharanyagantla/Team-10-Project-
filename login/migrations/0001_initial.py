@@ -64,12 +64,9 @@ class Migration(migrations.Migration):
             name='playername',
             field=models.ForeignKey(to='login.Player'),
         ),
-<<<<<<< HEAD
         migrations.AddField(
             model_name='asignpoints',
             name='team',
             field=models.ForeignKey(to='login.Team'),
         ),
-=======
->>>>>>> d1c94c9d04de9168cc110551037b0345be010529
     ]

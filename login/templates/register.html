@@ -2,11 +2,9 @@
 
 {% block content %}
 
-<<<<<<< HEAD
     <h2>Register</h2>
     <form action="/accounts/register/" method="post">{% csrf_token %} {{form}} 
     <input type="submit" value="Register" />   
-=======
 	{% load staticfiles %}
 	<link rel="stylesheet" type="text/css" href="{% static 'login/formstyle.css' %}" />
 
@@ -55,7 +53,6 @@
 	    	<p>{{form.password2}}</p>
 	    </div>> 
     <input id = "button" type="submit" value="Register" />   
->>>>>>> 63db62f4c73dc5f00ed00e4a89f79f9634d8944c
     </form>
 
 {% endblock %}
