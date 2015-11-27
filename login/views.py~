@@ -7,7 +7,7 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from forms import MyRegistrationForm
-from login.models import Match ,Team , Player  , UserProfile , AsignPoints
+from login.models import Match
 from django.template import RequestContext, loader
 
 

@@ -1,0 +1,49 @@
+<head>
+	<script type="text/javascript">
+
+	function KeepCount()
+    {
+		var inputElems = document.getElementsByTagName("input"),
+		count = 0;
+		for (var i=0; i<inputElems.length; i++) {
+			if (inputElems[i].type === "checkbox" && inputElems[i].checked === true) {
+	    		count++;
+			}
+		}
+		if (count > 5) {
+			alert('Pick Just five Please')
+			document.joe;
+			 return false;
+		}
+	}
+	</script>
+</head>
+
+<body>
+	<h1>hello</h1>
+	<h2> {{full_name}} -- {{match_name}} </h2>
+	<h3> {{Team_1_name}} </h3>
+	<form name = 'joe' action="" method="get">
+		<p id = "team1"> 
+			{% for i in Team_1_players %}
+		         <p> <input type='checkbox' name= "playerr" onClick="return KeepCount()" ;>{{ i.player_name }}</p>
+		    {% endfor %}
+		</p>
+		<h4> {{Team_2_name}} </h4>
+		<p id = "team2"> 
+			{% for object in Team_2_players %}
+		         <p> <input type='checkbox' name= "playerr" onClick="return KeepCount()" ;> {{ object.player_name }}</p>
+		    {% endfor %}
+		</p>
+		<input type="submit" value="Submit">
+	</form>
+
+	<h5>Selected players</h5>
+	<p id = "sel_players"> 
+	    <li> {{ sel_player1.player_name }}</li>
+	    <li> {{ sel_player2.player_name }}</li>
+	    <li> {{ sel_player3.player_name }}</li>
+	    <li> {{ sel_player4.player_name }}</li>
+	    <li> {{ sel_player5.player_name }}</li>
+	</p>
+</body>

@@ -15,7 +15,7 @@
 	    <div id = "matches">
 	    	<p>
 		    	{% for object in match_name %}
-		            <li><a href="{% url 'selectTeam' object.id %}"> {{object.id}}--{{ object.match_name }} -- {{object.pub_date }}</li>
+		             <li>{{ object.match_name }} -- {{object.pub_date }}</li>
 		        {% endfor %}    		
 	    	</p>
 	    </div>

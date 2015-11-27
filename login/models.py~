@@ -41,17 +41,4 @@ class AsignPoints(models.Model) :
 	def __str__(self):
 		return self.match.match_name
 
-class UserProfile(models.Model):
-	user = models.ForeignKey(User)
-	match = models.ForeignKey('Match')
-	player_1 = models.ForeignKey('Player' , related_name = 'player1')
-	p1_points = AsignPoints.objects.get(id = 1).points
-	player_2 = models.ForeignKey('Player' , related_name = 'player2')
-	player_3 = models.ForeignKey('Player' , related_name = 'player3')
-	player_4 = models.ForeignKey('Player' , related_name = 'player4')
-	player_5 = models.ForeignKey('Player' , related_name = 'player5')
-
-	def __str__(self):
-		return self.user.username +" for "+ self.match.match_name
-
 # ,limit_choices_to= Q(team_id=q[0].team_1_id) | Q(team_id=q[0].team_2_id)

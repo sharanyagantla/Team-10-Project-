@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from login.models import Player, Team , Match ,AsignPoints,UserProfile
+from login.models import Player, Team , Match ,AsignPoints
 
 
 admin.site.register(Player)
