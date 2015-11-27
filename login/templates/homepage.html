@@ -1,9 +1,17 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html lang="en">
 <head>
-    <title>Home Page</title>           
+    <title>Fantasy Cricket Web Application</title>           
 </head>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'login/home.css' %}" />
 <body>
-<p>My Content</p>    
+	<div id = "message">
+		<h2>Welcome to Fantasy cricket web application</h2>   	
+	</div>
+	<div id = "button">
+		<p> click to <a href="/accounts/login/">login</a> . . . </p> 	
+	</div>
+	
 </body>
 </html>

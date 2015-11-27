@@ -49,14 +49,14 @@ h1 {
 
 #leader {
 	position: absolute;
-	top:290px;
+	top:250px;
 	left:35px;
 	color: green;
 }
 
 #userList {
 	position: absolute;
-	top:350px;
+	top:300px;
 	left:55px;
 	color: black;
 }

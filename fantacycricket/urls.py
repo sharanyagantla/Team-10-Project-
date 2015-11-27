@@ -18,12 +18,12 @@ from django.contrib import admin
 
 urlpatterns = patterns('' ,
 	url(r'^admin/', include(admin.site.urls)),
-    url(r'^accounts/auth/' , 'login.views.auth_view'),
-    url(r'^accounts/logout/' , 'login.views.logout'),
-    url(r'^accounts/loggedin/', 'login.views.loggedin'),
-    url(r'^accounts/invalid/' , 'login.views.invalied_login'),
-    url(r'^accounts/register/' , 'login.views.register_user'),
-    url(r'^accounts/register_sucesss/' , 'login.views.register_sucesss'),
+	url(r'^accounts/auth/' , 'login.views.auth_view'),
+	url(r'^accounts/logout/' , 'login.views.logout'),
+	url(r'^accounts/loggedin/', 'login.views.loggedin'),
+	url(r'^accounts/invalid/' , 'login.views.invalied_login'),
+	url(r'^accounts/register/' , 'login.views.register_user'),
+	url(r'^accounts/register_sucesss/' , 'login.views.register_sucesss'),
 	url(r'^accounts/login/', 'login.views.login'),
-    url(r'^$', 'login.views.index')
+	url(r'^$', 'login.views.index')
 )

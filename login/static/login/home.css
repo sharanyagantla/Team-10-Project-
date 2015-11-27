@@ -1,0 +1,16 @@
+body {
+    background-image: url("fantasybg.jpg");
+}
+
+#button {
+   	position: absolute;
+	top:50px;
+	left:350px;
+}
+
+#message {
+	position: absolute;
+	top:10px;
+	left:350px;
+	color:blue;
+}
