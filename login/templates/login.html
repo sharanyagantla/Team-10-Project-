@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}" />
 	<body>
 	 	{% if form.errors %}
-	 		<p class="error"> sorry, wrong username and pasword</p>
+	 		<p class="error"> sorry, wrong username and password</p>
 	 	{% endif %}
 	 	<div>
 	 	<h1>Login</h1>
@@ -24,14 +24,17 @@
 	    	<p> New user? <a href="/accounts/register/"> <button>Register</button> </a></p>
 	    </div>
 	    <h1 id = "leader">Leader Board</h1>
+	   
 	    <div id = "userList">
 	    	<p>
 		    	{% for object in user_names %}
-		             <li>{{ object.username }} </li>
+		             <p>---> {{ object.username }} </p>
 		        {% endfor %}
 	    	</p>
 	    </div>
-	    <h2 id = "schedule">schedule</h2>
+	    
+	    
+	    <h2 id = "schedule">Schedule</h2>
 	    <div id = "matches">
 	    	<p>
 		    	{% for object in match_name %}

@@ -1,16 +1,19 @@
 body {
-    background-image: url("fantasybg.jpg");
+	background-image: url("url.jpeg");
+	background-repeat:no-repeat;
+	background-size:cover;
 }
 
 #button {
-   	position: absolute;
+	position: absolute;
 	top:50px;
-	left:350px;
+	left:650px;
+	color: red;
 }
 
 #message {
 	position: absolute;
-	top:10px;
-	left:350px;
-	color:blue;
+	top:3px;
+	left:650px;
+	color: red;
 }
