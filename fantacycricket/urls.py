@@ -25,4 +25,5 @@ urlpatterns = patterns('' ,
     url(r'^accounts/register/' , 'login.views.register_user'),
     url(r'^accounts/register_sucesss/' , 'login.views.register_sucesss'),
 	url(r'^accounts/login/', 'login.views.login'),
+    url(r'^$', 'login.views.index')
 )

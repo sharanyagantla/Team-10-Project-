@@ -72,3 +72,6 @@ def register_user(request):
 
 def register_sucesss(request):
 	return render_to_response('register_sucesss.html')
+
+def index(request):
+    return render_to_response('homepage.html', context_instance=RequestContext(request))	
