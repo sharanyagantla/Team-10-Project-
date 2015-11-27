@@ -1,0 +1,84 @@
+h2 {
+	position: absolute;
+	top:-3px;
+	left:220px;
+}
+
+#usernametext {
+	position: absolute;
+	top:70px;
+	left:50px;
+}
+
+
+#username {
+	position: absolute;
+	top:70px;
+	left:200px;
+}
+
+#first_nametext {
+	position: absolute;
+	top:100px;
+	left:50px;
+}
+
+#first_name {
+	position: absolute;
+	top:100px;
+	left:200px;
+}
+
+#last_nametext {
+	position: absolute;
+	top:130px;
+	left:50px;
+}
+
+#last_name {
+	position: absolute;
+	top:130px;
+	left:200px;
+}
+
+#emailtext {
+	position: absolute;
+	top:160px;
+	left:50px;
+}
+
+#email {
+	position: absolute;
+	top:160px;
+	left:200px;
+}
+
+#password1text {
+	position: absolute;
+	top:190px;
+	left:50px;
+}
+
+#password1 {
+	position: absolute;
+	top:190px;
+	left:200px;
+}
+
+#password2text {
+	position: absolute;
+	top:220px;
+	left:50px;
+}
+
+#password2 {
+	position: absolute;
+	top:220px;
+	left:200px;
+}
+
+#button {
+	position: absolute;
+	top:290px;
+	left:150px;	
+}
