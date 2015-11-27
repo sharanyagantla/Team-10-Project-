@@ -6,39 +6,40 @@
 
 	{% load staticfiles %}
 	<link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}" />
-
- 	{% if form.errors %}
- 		<p class="error"> sorry, wrong username and pasword</p>
- 	{% endif %}
- 	<div>
- 	<h1>Login</h1>
-	    <form action="/accounts/auth/" method="post"> {% csrf_token %} 
-	    	<label id = "userfield" for= "username" >user name:</label>
-	    	<input type="text" name="username" value="" id="username">
-	    	<label id = "passwordfield" for="password">password:</label>
-	    	<input type="password" name="password" value="" id="password">
-	    	<input id = "submittype" type="submit" value="login" />
-	    </form>
-    </div>
-    <div id = "registerblock">
-    	<p>new user?</p>
-    	<p><a href="/accounts/register/"> <button>Register</button> </a></p>
-    </div>
-    <h2 id = "leader">leader board</h2>
-    <div id = "userList">
-    	<p>
-	    	{% for object in user_names %}
-	             <li>{{ object.username }} </li>
-	        {% endfor %}
-    	</p>
-    </div>
-    <h2 id = "schedule">schedule</h2>
-    <div id = "matches">
-    	<p>
-	    	{% for object in match_name %}
-	             <li>{{ object.match_name }} -- {{object.pub_date }}</li>
-	        {% endfor %}    		
-    	</p>
-    </div>
+	<body>
+	 	{% if form.errors %}
+	 		<p class="error"> sorry, wrong username and pasword</p>
+	 	{% endif %}
+	 	<div>
+	 	<h1>Login</h1>
+		    <form action="/accounts/auth/" method="post" > {% csrf_token %} 
+		    	<label id = "userfield" for= "username" >user name:</label>
+		    	<input type="text" name="username" value="" id="username">
+		    	<label id = "passwordfield" for="password">password:</label>
+		    	<input type="password" name="password" value="" id="password">
+		    	<input id = "submittype" type="submit" value="login" />
+		    </form>
+	    </div>
+	    <div id = "registerblock">
+	    	<p>new user?</p>
+	    	<p><a href="/accounts/register/"> <button>Register</button> </a></p>
+	    </div>
+	    <h1 id = "leader">Leader Board</h1>
+	    <div id = "userList">
+	    	<p>
+		    	{% for object in user_names %}
+		             <li>{{ object.username }} </li>
+		        {% endfor %}
+	    	</p>
+	    </div>
+	    <h2 id = "schedule">schedule</h2>
+	    <div id = "matches">
+	    	<p>
+		    	{% for object in match_name %}
+		             <li>{{ object.match_name }} -- {{object.pub_date }}</li>
+		        {% endfor %}    		
+	    	</p>
+	    </div>
+    </body>
 
 {% endblock %}
