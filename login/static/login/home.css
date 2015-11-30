@@ -1,0 +1,19 @@
+body {
+	background-image: url("url.jpeg");
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+
+#button {
+	position: absolute;
+	top:50px;
+	left:650px;
+	color: red;
+}
+
+#message {
+	position: absolute;
+	top:3px;
+	left:650px;
+	color: red;
+}

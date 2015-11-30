@@ -1,17 +1,34 @@
-#leader {
-	position: absolute;
-	top:-5px;
-	left:400px;
-	color: green;
+body {
+    background-color: #F0FFFF;
 }
 
+#team1 {
+	position: absolute;
+	top:-5px;
+	left:300px;
+	color: red;
+}
+
+#team2 {
+	position: absolute;
+	top:-5px;
+	left:500px;
+	color: red;
+}
 
 
 #schedule {
 	position: absolute;
 	top:-5px;
-	left:700px;
+	left:740px;
 	color: blue;
+}
+
+#matches {
+	position: absolute;
+	top:50px;
+	left:760px;
+	color: black;
 }
 
 

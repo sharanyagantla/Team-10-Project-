@@ -1,8 +1,4 @@
 from django.db import models
-<<<<<<< HEAD
-
-# Create your models here.
-=======
 import datetime
 from django.db import models
 from django.utils import timezone
@@ -11,7 +7,11 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
+<<<<<<< HEAD:playy/models.py
+from django.contrib.auth.models import ( BaseUserManager, AbstractBaseUser )
+=======
 
+>>>>>>> 01f273e2d1c940e618083c134d88f8a90456d16f:login/models.py~
 
 # Create your models here.
 
@@ -28,6 +28,10 @@ class Match(models.Model):
 
 	def __str__(self):
 		return self.match_name
+<<<<<<< HEAD:playy/models.py
+		
+=======
+>>>>>>> 01f273e2d1c940e618083c134d88f8a90456d16f:login/models.py~
 
 class Player(models.Model) :
 	team = models.ForeignKey('Team')
@@ -36,6 +40,34 @@ class Player(models.Model) :
 		return self.player_name
 
 
+<<<<<<< HEAD:playy/models.py
+class AsignPoints(models.Model ) :
+	match = models.ForeignKey('Match')
+	team = models.ForeignKey('Team')
+	q = Match.objects.all()
+	playername = models.ForeignKey('Player')
+	points = models.IntegerField(default = 0)
+
+	def __str__(self):
+		return self.playername.player_name +" for "+ self.match.match_name
+
+
+class UserProfile(models.Model):
+	class Meta:
+		unique_together = ['user', 'match']
+	user = models.ForeignKey(User)
+	match = models.ForeignKey('Match')
+	player_1 = models.ForeignKey('Player' , related_name = 'player1')
+	player_2 = models.ForeignKey('Player' , related_name = 'player2')
+	player_3 = models.ForeignKey('Player' , related_name = 'player3')
+	player_4 = models.ForeignKey('Player' , related_name = 'player4')
+	player_5 = models.ForeignKey('Player' , related_name = 'player5')
+	total_points = models.IntegerField(default=0)
+
+	def __str__(self):
+		return self.user.username +" for "+ self.match.match_name
+
+=======
 class AsignPoints(models.Model) :
 	match = models.ForeignKey('Match')
 	team = models.ForeignKey('Team')
@@ -45,18 +77,5 @@ class AsignPoints(models.Model) :
 	def __str__(self):
 		return self.match.match_name
 
-class UserProfile(models.Model):
-	user = models.ForeignKey(User)
-	match = models.ForeignKey('Match')
-	player_1 = models.ForeignKey('Player' , related_name = 'player1')
-	p1_points = AsignPoints.objects.get(id = 1).points
-	player_2 = models.ForeignKey('Player' , related_name = 'player2')
-	player_3 = models.ForeignKey('Player' , related_name = 'player3')
-	player_4 = models.ForeignKey('Player' , related_name = 'player4')
-	player_5 = models.ForeignKey('Player' , related_name = 'player5')
-
-	def __str__(self):
-		return self.user.username +" for "+ self.match.match_name
-
 # ,limit_choices_to= Q(team_id=q[0].team_1_id) | Q(team_id=q[0].team_2_id)
->>>>>>> 01f273e2d1c940e618083c134d88f8a90456d16f
+>>>>>>> 01f273e2d1c940e618083c134d88f8a90456d16f:login/models.py~

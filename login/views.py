@@ -7,10 +7,15 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from forms import MyRegistrationForm
+<<<<<<< HEAD
 from playy.models import Match, Team , Player  , UserProfile , AsignPoints
 from django.template import RequestContext, loader
 from django.shortcuts import get_object_or_404, render ,redirect
 from django.core.urlresolvers import reverse
+=======
+from login.models import Match ,Team , Player  , UserProfile , AsignPoints
+from django.template import RequestContext, loader
+>>>>>>> 01f273e2d1c940e618083c134d88f8a90456d16f
 
 
 def login(request):
@@ -19,7 +24,11 @@ def login(request):
 	q = Match.objects.all()
 	# return render_to_response('login.html' , {c , 'match_name': q[0].match_name }  )
 	t = loader.get_template('login.html')
+<<<<<<< HEAD
 	r = RequestContext(request, {'match_name': q  , 'user_names' : User.objects.all()[:5]} )
+=======
+	r = RequestContext(request, {'match_name': q  , 'user_names' : User.objects.all()} )
+>>>>>>> 01f273e2d1c940e618083c134d88f8a90456d16f
 	return HttpResponse(t.render(r), content_type=c)
 
 
@@ -41,8 +50,18 @@ def invalied_login(request):
 
 
 def loggedin(request):
+<<<<<<< HEAD
 	q = Match.objects.all()
 	return render_to_response('loggedin.html' , {'full_name' : request.user.username , 'matchs_name' :q})
+=======
+	c= {}
+	c.update(csrf(request))
+	q = Match.objects.all()
+	t = loader.get_template('loggedin.html')
+	r = RequestContext(request, {'match_name': q , 'full_name' : request.user.username} )
+	return HttpResponse(t.render(r), content_type=c)
+
+>>>>>>> 01f273e2d1c940e618083c134d88f8a90456d16f
 
 def logout(request):
 	auth.logout(request)
@@ -68,6 +87,12 @@ def register_user(request):
 def register_sucesss(request):
 	return render_to_response('register_sucesss.html')
 
+<<<<<<< HEAD
+=======
+def index(request):
+    return render_to_response('homepage.html', context_instance=RequestContext(request))
+
+>>>>>>> 01f273e2d1c940e618083c134d88f8a90456d16f
 
 def select_team(request , pk):
 	m = Match.objects.all()
@@ -75,6 +100,7 @@ def select_team(request , pk):
 	a= AsignPoints.objects.all()
 	t = Team.objects.all()
 	userid = request.user.id
+<<<<<<< HEAD
 	template = loader.get_template('select_team.html')
 	c = {p}
 	try :
@@ -164,8 +190,33 @@ def vote(request , pk):
 	# k = UserProfile.objects.all().filter(user_id = request.user.id).get(match_id = pk).p1_points_id
 	# AsignPoints.objects.all().get(id = k).points
 
+=======
+	try :
+		u = UserProfile.objects.all()
+		all_sel_players = u.filter(user_id = userid).get(match_id = pk)
+		return render_to_response('select_team.html', {'full_name' : request.user.username ,
+ 'match_name' : m.get(id = pk) , 'Team_1_name' : t.get(id = m.get(id = pk).team_1_id) ,
+  'Team_2_name' : t.get(id = m.get(id = pk).team_2_id) , 
+  'Team_1_players' : p.filter(team_id = m.get(id = pk).team_1_id) , 
+  'Team_2_players' : p.filter(team_id = m.get(id = pk).team_2_id) ,
+  'sel_player1' : all_sel_players.player_1 ,
+  'sel_player2' : all_sel_players.player_2 ,
+  'sel_player3' : all_sel_players.player_3 ,
+  'sel_player4' : all_sel_players.player_4 ,
+  'sel_player5' : all_sel_players.player_5 ,  } )
+	except UserProfile.DoesNotExist :
+		return render_to_response('select_team.html', {'full_name' : request.user.username ,
+ 'match_name' : m.get(id = pk) , 'Team_1_name' : t.get(id = m.get(id = pk).team_1_id) ,
+  'Team_2_name' : t.get(id = m.get(id = pk).team_2_id) , 
+  'Team_1_players' : p.filter(team_id = m.get(id = pk).team_1_id) , 
+  'Team_2_players' : p.filter(team_id = m.get(id = pk).team_2_id) })
+>>>>>>> 01f273e2d1c940e618083c134d88f8a90456d16f
 
 
 
 
 
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 01f273e2d1c940e618083c134d88f8a90456d16f

@@ -1,10 +1,11 @@
 from django.contrib import admin
 
-<<<<<<< HEAD
-# Register your models here.
+<<<<<<< HEAD:playy/admin.py
+from .models import Player, Team , Match ,AsignPoints , UserProfile 
 =======
-from login.models import Player, Team , Match ,AsignPoints,UserProfile
+from login.models import Player, Team , Match ,AsignPoints
 
+>>>>>>> 01f273e2d1c940e618083c134d88f8a90456d16f:login/admin.py~
 
 admin.site.register(Player)
 admin.site.register(UserProfile)
@@ -22,15 +23,34 @@ class TeamAdmin(admin.ModelAdmin):
 
 admin.site.register(Team, TeamAdmin)
 
+<<<<<<< HEAD:playy/admin.py
+class AsignPointsInLine(admin.TabularInline):
+    model = AsignPoints
+    extra = 11
+=======
 class PlayersInLine(admin.TabularInline):
     model = AsignPoints
+>>>>>>> 01f273e2d1c940e618083c134d88f8a90456d16f:login/admin.py~
 
 class MatchAdmin(admin.ModelAdmin):
    fieldsets = [
        (None,       {'fields': ['match_name','pub_date','team_1','team_2']}),
    ]
+<<<<<<< HEAD:playy/admin.py
+   inlines = [AsignPointsInLine]
+
+admin.site.register(Match, MatchAdmin)
+admin.site.register(AsignPoints)
+
+
+
+
+
+
+
+=======
    inlines = [PlayersInLine]
 
 admin.site.register(Match, MatchAdmin)
 admin.site.register(AsignPoints)
->>>>>>> 01f273e2d1c940e618083c134d88f8a90456d16f
+>>>>>>> 01f273e2d1c940e618083c134d88f8a90456d16f:login/admin.py~
