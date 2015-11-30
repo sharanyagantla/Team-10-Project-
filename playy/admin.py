@@ -1,8 +1,9 @@
 from django.contrib import admin
 
-from .models import Player, Team , Match 
+from .models import Player, Team , Match ,AsignPoints , UserProfile 
 
 admin.site.register(Player)
+admin.site.register(UserProfile)
 
 class PlayerInLine(admin.TabularInline):
     model = Player
@@ -17,17 +18,19 @@ class TeamAdmin(admin.ModelAdmin):
 
 admin.site.register(Team, TeamAdmin)
 
-
-class PlayersInLine(admin.TabularInline):
-    model = Player
+class AsignPointsInLine(admin.TabularInline):
+    model = AsignPoints
+    extra = 11
 
 class MatchAdmin(admin.ModelAdmin):
    fieldsets = [
        (None,       {'fields': ['match_name','pub_date','team_1','team_2']}),
    ]
-   inlines = [PlayersInLine]
+   inlines = [AsignPointsInLine]
 
 admin.site.register(Match, MatchAdmin)
+admin.site.register(AsignPoints)
+
 
 
 

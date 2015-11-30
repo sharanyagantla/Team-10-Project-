@@ -4,7 +4,13 @@
 
 {% block content %}
 
-	<h2> Hi {{full_name}} you are now logged in! </h2>
+	<h1> Hi {{full_name}} you are now logged in! </h1>
 	<p>click <a href="/accounts/logout/">here</a> to logout</p>
+
+	<p id = "matches"> 
+    	{% for object in matchs_name %}
+             <li><a href="{% url 'selectTeam' object.id %}"> {{object.id}}--{{ object.match_name }} -- {{object.pub_date }}</li>
+        {% endfor %}
+    </p>
 
 {% endblock %}

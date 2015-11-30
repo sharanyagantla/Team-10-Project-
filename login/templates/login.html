@@ -25,6 +25,16 @@
     	<p><a href="/accounts/register/"> <button>Register</button> </a></p>
     </div>
     <h2>leader board</h2>
+    <p id = "userList"> 
+    	{% for object in user_names %}
+             <li>{{ object.username }} </li>
+        {% endfor %}
+    </p>
     <h3>schedule</h3>
+    <p id = "matches"> 
+    	{% for object in match_name %}
+             <li>{{ object.match_name }} -- {{object.pub_date }}</li>
+        {% endfor %}
+    </p>	
 
 {% endblock %}
