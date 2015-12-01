@@ -1,0 +1,51 @@
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}" />
+
+ 	{% if form.errors %}
+ 		<p class="error"> sorry, wrong username and pasword</p>
+ 	{% endif %}
+ 	<div>
+ 	<h1>Login</h1>
+	    <form action="/accounts/auth/" method="post"> {% csrf_token %} 
+	    	<label for= "username" id="userfield" >user name:</label>
+	    	<input type="text" name="username" value="" id="username">
+	    	<label for="password" id = "passwordfield">password:</label>
+	    	<input type="password" name="password" value="" id="password">
+	    	<input type="submit" value="login" id = "submittype" />
+	    </form>
+    </div>
+    <div id = "registerblock">
+    	<p>new user?</p>
+    	<p><a href="/accounts/register/"> <button>Register</button> </a></p>
+    </div>
+
+    <div id = "leader">
+    <h1>LeaderBoard</h1>
+    </div>
+
+    <div id = "userList">
+    <p > 
+    	{% for object in user_names %}
+             <li>{{ object.username }} </li>
+        {% endfor %}
+    </p>
+    </div>
+
+    <div id = "schedule">
+    <h1>Schedule</h1>
+    </div>
+    <div id = "matches">
+    <p> 
+    	{% for object in match_name %}
+             <li>{{ object.match_name }} -- {{object.pub_date }}</li>
+        {% endfor %}
+    </p>	
+    </div>
+
+{% endblock %}

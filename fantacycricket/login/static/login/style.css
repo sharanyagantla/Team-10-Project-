@@ -1,0 +1,85 @@
+body {
+    background-image: url("fantasybg.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+
+}
+
+#userfield {
+	position: absolute;
+	top:80px;
+	left:50px;
+	color: black;
+}
+
+
+#username {
+	position: absolute;
+	top:105px;
+	left:50px;
+	color: black;
+}
+
+#passwordfield {
+	position: absolute;
+	top:130px;
+	left:50px;
+	color: black;
+}
+
+#password {
+	position: absolute;
+	top:150px;
+	left:50px;
+	color: black;
+}
+
+#submittype {
+	position: absolute;
+	top:180px;
+	left:50px;
+	color: black;
+}
+
+#registerblock {
+	position: absolute;
+	top:200px;
+	left:50px;
+}
+
+h1 {
+	position: absolute;
+	top:15px;
+	left:50px;
+	color: black;
+}
+
+
+
+#leader {
+	position: absolute;
+	top:280px;
+	left:5px;
+	color: black;
+}
+
+#userList {
+	position: absolute;
+	top:350px;
+	left:70px;
+	color: red;
+}
+
+#schedule {
+	position: absolute;
+	top:-20px;
+	left:760px;
+	color: black;
+}
+
+#matches {
+	position: absolute;
+	top:45px;
+	left:820px;
+	color: red;
+}

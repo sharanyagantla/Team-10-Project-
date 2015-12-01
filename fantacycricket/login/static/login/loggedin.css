@@ -1,0 +1,40 @@
+body {
+	background-image: url("user.jpeg");
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+
+
+#schedule {
+	position: absolute;
+	top:-5px;
+	left:740px;
+	color: red;
+}
+
+#matches {
+	position: absolute;
+	top:50px;
+	right:760px;
+	color: red;
+}
+
+a {
+    color: black;
+}
+
+
+#p{
+	position: absolute;
+	top:-9px;
+	right:200px;
+	color: red;
+}
+
+#h4{
+	position: absolute;
+	top:-9px;
+	right:50px;
+	color: red;
+}
+

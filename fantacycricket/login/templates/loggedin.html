@@ -1,0 +1,28 @@
+
+
+{% extends "base.html" %}
+
+{% block content %}
+	
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'login/loggedin.css' %}" />
+	<body>
+		<div id = "p">
+		<h3> Hi {{full_name}} !!!!!!!!!</h3>
+		</div>
+
+		<div id = "h4">
+		<h3>click <a href="/accounts/logout/">Logout</a></h3>
+		</div>
+
+		<div id = "matches">
+		<h1>Matches</h1>
+		<h4> 
+	    	{% for object in matchs_name %}
+	             <li><a href="{% url 'selectTeam' object.id %}"> {{object.id}}--{{ object.match_name }} -- {{object.pub_date }}</li>
+	        {% endfor %}
+	    </h4>
+	    </div>
+    </body>
+
+{% endblock %}
