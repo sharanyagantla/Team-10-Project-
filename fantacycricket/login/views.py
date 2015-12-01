@@ -156,15 +156,7 @@ def vote(request , pk):
 			,player_5_id= selected_choices[4] )
 		except IndexError:
 			return HttpResponseRedirect(reverse('selectTeam', args=(pk,)))
-	return HttpResponse("Team created succesfully")
-
-	# Redirect(reverse('selectTeam', args=(p.id,)))
-	# p1id = UserProfile.objects.all().filter(match_id = 1).get(user_id = 11).player_1_id
-	# AsignPoints.objects.all().filter(match_id = 1).get(playername_id = p1id).points
-	# k = UserProfile.objects.all().filter(user_id = request.user.id).get(match_id = pk).p1_points_id
-	# AsignPoints.objects.all().get(id = k).points
-
-
+	return HttpResponseRedirect(reverse('selectTeam', args=(pk,)))
 
 def index(request):
     return render_to_response('homepage.html', context_instance=RequestContext(request))
