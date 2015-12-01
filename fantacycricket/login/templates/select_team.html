@@ -1,4 +1,74 @@
+<html>
 <head>
+<style>
+
+#team1_h{
+	position: absolute;
+	top:70px;
+	left:250px;
+	color: red;
+}
+
+#team1{
+	position: absolute;
+	top:110px;
+	left:250px;
+	color: red;
+}
+
+#team2_h{
+	position: absolute;
+	top:70px;
+	left:550px;
+	color: red;	
+}
+
+#team2{
+	position: absolute;
+	top:110px;
+	left:550px;
+	color: red;	
+}
+
+h5{
+	position: absolute;
+	top:30px;
+	left:350px;
+
+}
+
+h2{
+	position: absolute;
+	top:10px;
+	left:250px;
+}
+
+#buttontype {
+	position: absolute;
+	top:550px;
+	left:400px;
+	color: red;
+}
+
+#sel_players {
+	position: absolute;
+	top:50px;
+	left:1050px;
+	color: red;
+}
+
+#h4{
+	position: absolute;
+	top:-9px;
+	right:50px;
+	color: red;
+}
+
+body {
+    background-color: #cccccc;
+}
+
+</style>
 	<script type="text/javascript">
 
 	function KeepCount()
@@ -32,33 +102,52 @@
 </head>
 
 <body>
-	<h1>hello, {{full_name}}</h1>
-	<h2> {{match_name}} </h2>
-	<h3> {{Team_1_name}} </h3>
-	<h4> {{key}} </h4>
+	<h2>{{full_name}} selects {{match_name}} </h2>
+
+	<div id = "team1_h">
+	<h4> {{Team_1_name}} </h4>
+	</div>
 	<form name = 'joe' action = "{% url 'vote' key %}" method="post">
 	{% csrf_token %}
-		<p id = "team1"> 
-			{% for player in Team_1_players %}
-		         <p> <input type='checkbox' name= "playerr" onClick="return KeepCount()" value="{{ player.id }}" ;>{{ player.player_name }}</p>
-		    {% endfor %}
-		</p>
+		<div id = "team1">
+			<p> 
+				{% for player in Team_1_players %}
+			         <p> <input type='checkbox' name= "playerr" onClick="return KeepCount()" value="{{ player.id }}" ;>{{ player.player_name }}</p>
+			    {% endfor %}
+			</p>
+		</div>
+
+		<div id = "team2_h">
 		<h4> {{Team_2_name}} </h4>
-		<p id = "team2"> 
+		</div>
+
+		<div id = "team2">
+		<p> 
 			{% for player in Team_2_players %}
 		         <p> <input type='checkbox' name= "playerr" onClick="return KeepCount()" value="{{ player.id }}" ;> {{ player.player_name }}</p>
 		    {% endfor %}
 		</p>
-		<input type="submit" onClick="return check()" value="Submit">
+		</div>
+
+		<input type="submit" onClick="return check()" value="Submit" id = "buttontype">
 	</form>
 
-	<h5>Selected players</h5>
-	<p id = "sel_players"> 
-	    <li> {{ sel_player1.player_name }} --- {{p1_points}} </li>
-	    <li> {{ sel_player2.player_name }} --- {{p2_points}}</li>
-	    <li> {{ sel_player3.player_name }} --- {{p3_points}}</li>
-	    <li> {{ sel_player4.player_name }} --- {{p4_points}}</li>
-	    <li> {{ sel_player5.player_name }} --- {{p5_points}}</li>
-	    <li> Total points --- {{tot_points}}</li>
-	</p>
+	<h5>Select players from the below list:</h5>
+
+	<div  id = "sel_players"> 
+	<p>Selected Players are:</p>
+		<p> 
+		    <li> {{ sel_player1.player_name }} --- {{p1_points}} </li>
+		    <li> {{ sel_player2.player_name }} --- {{p2_points}}</li>
+		    <li> {{ sel_player3.player_name }} --- {{p3_points}}</li>
+		    <li> {{ sel_player4.player_name }} --- {{p4_points}}</li>
+		    <li> {{ sel_player5.player_name }} --- {{p5_points}}</li>
+		    <li> Total points --- {{tot_points}}</li>
+		</p>
+	</div>
+
+	<div id = "h4">
+		<h3><a href="/accounts/logout/">Logout</a></h3>
+	</div>
 </body>
+</html>
