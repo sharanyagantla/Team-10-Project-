@@ -1,0 +1,143 @@
+<!-- <html> -->
+<!-- <head> -->
+	
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<!-- </head> -->
+<!-- <body> -->
+<!-- <p>For every match, select your own team and you get points according to how your </p> -->
+	
+<!-- <p class = "id">for Tournament Rank. Top performers in a match/tournament will get Fame points.  -->
+	<!-- The app is just pure fun and thrill.</p>	
+	<p>players score in the actual match. Your points from all the matches are added </p>
+	<p>for Tournament Rank. Top performers in a match/tournament will get Fame points.</p>
+	<p>Power player can be chosen from your list of five players, so you could gain double points</p> -->
+
+
+<!-- <p> -->
+<!-- One point would be awarded for each run made by a batsman and 20 points for each wicket taken by a bowler
+</p>
+<p> -->
+<!-- Select any 5 players from both the teams
+</p>
+<p>
+Once the match has started you wil not be allowed to select players
+</p>
+<br>
+<br> -->
+<!-- <p><a href="/accounts/login/" class="btn btn-primary btn-xl">Login / Register</a>
+</p>
+</body>
+</html> -->
+
+
+
+
+<!-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>Fantasy Cricket Web Application</title>           
+</head>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'login/home.css' %}" />
+<body>
+	<div id = "message">
+		<h1>Fantasy Cricket Web Application</h1>   	
+	</div>
+	<div id = "button">
+		<p><a href="/accounts/login/" style="color: #CC0000">ENTER</a></p> 	
+	</div>
+	
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- <title>Creative - Start Bootstrap Theme</title> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'login/gamerules.css' %}" />
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="{% static 'login/css1/bootstrap.min.css' %}" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="font-awesome1/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="{% static 'css1/animate.min.css' %}" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css1/creative.css' %}" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top">
+
+    <header  style="margin-top: 10%">
+        <div class="header-content"  style="margin-top: -2%">
+            <div class="header-content-inner">
+                <h1 style="color:OrangeRed">GAME RULES</h1>
+                <!-- <hr> -->
+                <br>
+                <br>
+                <p style="color:OrangeRed">For every match, select your own team and you get points according to how your players score in the actual match. One point would be awarded if one run is made by the batsmen and 20 points for every wicket taken. You can select only 5 players from both the teams. Once the match has started you will not be allowed to choose players. Have Fun !! and win exciting prizes !!</p>
+
+                <a href="/accounts/login/" class="btn btn-primary btn-xl">LogIn / SignUp</a>
+                <a href="/accounts/homepage/" class="btn btn-primary btn-xl"> Go Back</a>
+            </div>
+            <div>
+            </div>
+            <br>
+        </div>
+    </header>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/wow.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/creative.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

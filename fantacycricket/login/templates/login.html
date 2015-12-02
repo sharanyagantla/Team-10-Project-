@@ -1,107 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>User Login / Sign Up </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
 
-{% extends "base.html" %}
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    {% extends "base.html" %}
 
 {% block content %}
 
 	{% load staticfiles %}
 	<link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}" />
-    <script type="text/javascript">
-
-  function checkForm(form)
-  {
-    if(form.username.value == "") {
-      alert("Error: Username cannot be blank!");
-      form.username.focus();
-      return false;
-    }
-    re = /^\w+$/;
-    if(!re.test(form.username.value)) {
-      alert("Error: Username must contain only letters, numbers and underscores!");
-      form.username.focus();
-      return false;
-    }
-
-    if(form.password.value != "" && form.password.value == form.pwd2.value) {
-      if(form.password.value.length < 6) {
-        alert("Error: Password must contain at least six characters!");
-        form.password.focus();
-        return false;
-      }
-      if(form.password.value == form.username.value) {
-        alert("Error: Password must be different from Username!");
-        form.password.focus();
-        return false;
-      }
-      re = /[0-9]/;
-      if(!re.test(form.password.value)) {
-        alert("Error: password must contain at least one number (0-9)!");
-        form.password.focus();
-        return false;
-      }
-      re = /[a-z]/;
-      if(!re.test(form.password.value)) {
-        alert("Error: password must contain at least one lowercase letter (a-z)!");
-        form.password.focus();
-        return false;
-      }
-      re = /[A-Z]/;
-      if(!re.test(form.password.value)) {
-        alert("Error: password must contain at least one uppercase letter (A-Z)!");
-        form.password.focus();
-        return false;
-      }
-    } else {
-      alert("Error: Please check that you've entered and confirmed your password!");
-      form.password.focus();
-      return false;
-    }
-
-    alert("You entered a valid password: " + form.password.value);
-    return true;
-  }
-
-</script>
 
  	{% if form.errors %}
  		<p class="error"> sorry, wrong username and pasword</p>
  	{% endif %}
+<div style="display:flex">
+<div class="container">
  	<div>
- 	<h1>Login</h1>
-	    <form action="/accounts/auth/" method="post" onsubmit="return checkForm(this);"> {% csrf_token %} 
-	    	<label for= "username" id="userfield" >user name:</label>
-	    	<input type="text" name="username" value="" id="username">
-	    	<label for="password" id = "passwordfield">password:</label>
-	    	<input type="password" name="password" value="" id="password">
-	    	<input type="submit" value="login" id = "submittype" />
-	    </form>
+ 	    <h1>Login</h1>
+	        <form action="/accounts/auth/" method="post" class="col-md-12"> {% csrf_token %} 
+            <div class="form-group">
+    	    	<label for= "username" >User Name:</label>
+    	    	<input type="text" name="username" value="" id="username">
+            </div>
+            <div class="form-group">
+    	    	<label for="password">Password:</label>
+    	    	<input type="password" name="password" value="" id="password">
+            </div>
+            <div class="form-group">
+    	    	<button type="submit" class="btn btn-danger">Login</button>
+            </div>
+	        </form>
+        <br>
+        <br>
+        <br>
+    
     </div>
-    <div id = "registerblock">
-    	<p>new user?</p>
-    	<p><a href="/accounts/register/"> <button>Register</button> </a></p>
+    <div>
+        <br>
+        <br>
+    	<h2>New User?</h2>
+        <form action="/accounts/register/">
+            <button type="submit" class="btn btn-danger">Register Here</button>
+    	   <!-- <p><a href="/accounts/register/"> <button>Register Here</button> </a></p> -->
+        </form>
     </div>
+    <br>
+    <br> 
+        
+<!--     <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo">Click for Leader Board</button>
+        <div id="demo" class="collapse">
+            <p id = "userList"> 
+                    {% for object in user_names %}
+                         <li>{{ object }} -- {{object.full_points}} </li>
+                    {% endfor %}
+                </p>
+        </div>
+        <br>
+        <br>
+        <br>
+    
+    <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo1">Click for Match Schedule</button>
+        <div id="demo1" class="collapse">
+            <p id = "matches"> 
+    	           {% for object in match_name %}
+                        <li>{{ object.match_name }} -- {{object.pub_date }}</li>
+                    {% endfor %}
+            </p>
+        </div>	 -->
+</div>
+<div style="margin:1%">
 
-    <div id = "leader">
-    <h1>LeaderBoard</h1>
-    </div>
+    <button type="button" style = "font-size:150%" class="btn btn-danger" data-toggle="collapse" data-target="#demo">Click for Leader Board</button>
+        <div id="demo" class="collapse">
+            <p id = "userList"> 
+                {% for object in user_names %}
+                    <p  style = "font-weight:bold">{{ object }} -- {{object.full_points}} </p>
+                {% endfor %}
+            </p>
+        </div>
+        <br>
+        <br>
+        <br>
+</div>
+<div style="margin:1%">    
+    <button type="button"  style = "font-size:150%" class="btn btn-danger" data-toggle="collapse" data-target="#demo1">Click for Match Schedule</button>
+        <div id="demo1" class="collapse">
+            <p id = "matches" style = "font-color:150%"> 
+                   {% for object in match_name %}
+                        <p  style = "font-weight:bold">{{ object.match_name }} -- {{object.pub_date }}</p>
+                    {% endfor %}
+            </p>
+        </div>  
 
-    <div id = "userList">
-    <p > 
-      {% for object in user_names %}
-             <li>{{ object }} -- {{object.full_points}} </li>
-        {% endfor %}
-    </p>
-    </div>
 
-    <div id = "schedule">
-    <h1>Schedule</h1>
-    </div>
-    <div id = "matches">
-    <p> 
-      {% for object in match_name %}
-             <li>{{ object.match_name }} -- {{object.pub_date }}</li>
-        {% endfor %}
-    </p>	
-    </div>
-
+</div>
+</div>
 {% endblock %}
+
+</body>
+</html>
+

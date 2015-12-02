@@ -1,0 +1,210 @@
+<html>
+<head>
+<style>
+
+#team1_h{
+	position: absolute;
+	top:70px;
+	left:250px;
+	color: red;
+}
+
+#team1{
+	position: absolute;
+	top:110px;
+	left:250px;
+	color: red;
+}
+
+#team2_h{
+	position: absolute;
+	top:70px;
+	left:550px;
+	color: red;	
+}
+
+#team2{
+	position: absolute;
+	top:110px;
+	left:550px;
+	color: red;	
+}
+
+h5{
+	position: absolute;
+	top:30px;
+	left:350px;
+
+}
+
+h2{
+	position: absolute;
+	top:10px;
+	left:250px;
+}
+
+#buttontype {
+	position: absolute;
+	top:280px;
+	left:400px;
+	color: red;
+}
+
+#sel_players {
+	position: absolute;
+	top:10px;
+	left:830px;
+	color: red;
+}
+
+#h4{
+	position: absolute;
+	top:-9px;
+	right:50px;
+	color: red;
+}
+
+#leaderboard{
+	position: absolute;
+	top:450px;
+	left:830px;
+	color: red;
+}
+
+#pp {
+	position: absolute;
+	top:280px;
+	left:10px;
+	color: red;
+}
+
+#tp {
+	position: absolute;
+	top:440px;
+	left:30px;
+	color: red;
+}
+
+body {
+    background-color: #cccccc;
+}
+
+</style>
+	<script type="text/javascript">
+
+	function KeepCount()
+    {
+		var inputElems = document.getElementsByTagName("input"),
+		count = 0;
+		for (var i=0; i<inputElems.length; i++) {
+			if (inputElems[i].type === "checkbox" && inputElems[i].checked === true) {
+	    		count++;
+			}
+		}
+		if (count > 5 ) {
+			alert('Pick exactly five Please')
+			document.joe;
+			 return false;
+		}
+	}
+	function checkflag(f) {
+		if(f == 1) {
+			var radios = document.getElementsByName('playerr');
+			for (var i = 0; i< radios.length;  i++) {
+		   		 radios[i].disabled = true;
+				}
+			document.getElementById("buttontype").disabled = true;
+		}
+	}
+	function check() {
+		var inputElems = document.getElementsByTagName("input"),
+		count = 0;
+		for (var i=0; i<inputElems.length; i++) {
+			if (inputElems[i].type === "checkbox" && inputElems[i].checked === true) {
+	    		count++;
+			}
+		}
+		if (count < 5 ) {
+			alert('Pick exactly five Please')
+		}
+	}
+	</script>
+</head>
+
+<body onload="checkflag({{test}})">
+	<h2>{{full_name}} selects {{match_name}} </h2>
+
+	<div id = "team1_h">
+	<h4> {{Team_1_name}} </h4>
+	</div>
+	<form name = 'joe' action = "{% url 'vote' key %}" method="post">
+	{% csrf_token %}
+		<div id = "team1">
+			<p> 
+				{% for player in Team_1_players %}
+			         <p> <input type='checkbox' name= "playerr" onClick="return KeepCount()" value="{{ player.id }}" ;>{{ player.player_name }}</p>
+			    {% endfor %}
+			</p>
+		</div>
+
+		<div id = "team2_h">
+		<h4> {{Team_2_name}} </h4>
+		</div>
+
+		<div id = "team2">
+		<p> 
+			{% for player in Team_2_players %}
+		         <p> <input type='checkbox' name= "playerr" onClick="return KeepCount()" value="{{ player.id }}" ;> {{ player.player_name }}</p>
+		    {% endfor %}
+		</p>
+		</div>
+
+	<input type="submit" onClick="return check()" value="Save Team" id = "buttontype">
+	</form>
+
+	<h5>Select players from the below list:</h5>
+
+	<div  id = "sel_players"> 
+	<p>Selected Players are:</p>
+		<p> 
+		<a><img src="{{ sel_player1.img.url }}" width = 100px height = 100px/>  {{p1_points}}  </a>
+	    <a> <img src="{{ sel_player2.img.url }}" width = 100px height = 100px/>  {{p2_points}}</a>
+	    <a> <img src="{{ sel_player3.img.url }}" width = 100px height = 100px/>  {{p3_points}}</a>
+		<p></p>
+	    <a> <img src="{{ sel_player4.img.url }}" width = 100px height = 100px/>  {{p4_points}}</a>
+	    <a> <img src="{{ sel_player5.img.url }}" width = 100px height = 100px/>  {{p5_points}}</a>
+	    <p id = "pp"> 	power player <img src="{{ sel_pp.img.url }}" width = 125px height = 125px/> {{pp_points}} </p>
+	    <a id = "tp"> Total points --- {{tot_points}}</a>
+	</div>
+
+	<div id = "h4">
+		<h3><a href="/accounts/logout/">Logout</a></h3>
+	</div>
+
+	<div id = "leaderboard">
+		<h4>Leader Board for current Match</h4>
+		{% if test == 1 %}
+			{% if leader_length >= 1 %}
+				<form action="{% url 'userTeam' lbp1.id key %}">
+				<a> {{lbp1}} </a> <input  type="submit" value="view his team"></form>
+			{% endif %}
+			{% if leader_length >= 2 %}
+				<form action="{% url 'userTeam' lbp2.id key %}">
+				<a> {{lbp2}} </a> <input  type="submit" value="view his team"></form>
+			{% endif %}
+			{% if leader_length >= 3 %}
+				<form action="{% url 'userTeam' lbp3.id key %}">
+				<a> {{lbp3}} </a> <input  type="submit" value="view his team"></form>
+			{% endif %}
+			{% if leader_length >= 4 %}
+				<form action="{% url 'userTeam' lbp4.id key %}">
+				<a> {{lbp4}} </a> <input  type="submit" value="view his team"></form>
+			{% endif %}
+			{% if leader_length >= 5 %}
+				<form action="{% url 'userTeam' lbp5.id key %}">
+				<a> {{lbp5}} </a> <input  type="submit" value="view his team"></form>
+			{% endif %}
+		{% endif %}
+	</div>
+</body>
+</html>

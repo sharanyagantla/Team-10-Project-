@@ -25,6 +25,7 @@ class Match(models.Model):
 class Player(models.Model) :
 	team = models.ForeignKey('Team')
 	player_name = models.CharField(max_length=200)
+	img = models.ImageField(upload_to = 'pics')
 	def __str__(self):
 		return self.player_name
 
@@ -48,6 +49,7 @@ class UserProfile(models.Model):
 	player_3 = models.ForeignKey('Player' , related_name = 'player3')
 	player_4 = models.ForeignKey('Player' , related_name = 'player4')
 	player_5 = models.ForeignKey('Player' , related_name = 'player5')
+	power_player = models.ForeignKey('Player' , related_name = 'pplayer')
 	total_points = models.IntegerField(default=0)
 
 	def __str__(self):

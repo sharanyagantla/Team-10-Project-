@@ -20,7 +20,7 @@ body {
 }
 
 a {
-    color: black;
+    color: white;
 }
 
 
@@ -28,7 +28,7 @@ a {
 	position: absolute;
 	top:-9px;
 	right:200px;
-	color: red;
+	color: white;
 }
 
 #h4{

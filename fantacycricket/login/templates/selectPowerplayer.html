@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>select power player</title>
+	<script type="text/javascript">
+
+	function check() {
+		var inputElems = document.getElementsByTagName("input"),
+		count = 0;
+		for (var i=0; i<inputElems.length; i++) {
+			if (inputElems[i].type === "radio" && inputElems[i].checked === true) {
+	    		count++;
+			}
+		}
+		if (count == 0 ) {
+			alert('Please Pick one power Player')
+			document.pp;
+		}
+	}
+
+	</script>
+</head>
+<body>
+	<h1>Team created successfully</h1>
+	<h2>Select power player</h2>
+	<form name = 'pp' action ="{% url 'powerplayer' matchid %}" method="post"> {% csrf_token %}
+			<input id="select" type='radio' name= "pplayer" value="{{players.player_1_id}}" onclick="count()">{{players.player_1}}</input>
+			<input id="select" type='radio' name= "pplayer" value="{{players.player_2_id}}" onclick="count()">{{players.player_2}}</input>
+			<input id="select" type='radio' name= "pplayer" value="{{players.player_3_id}}" onclick="count()">{{players.player_3}}</input>
+			<input id="select" type='radio' name= "pplayer" value="{{players.player_4_id}}" onclick="count()">{{players.player_4}}</input>
+			<input id="select" type='radio' name= "pplayer" value="{{players.player_5_id}}" onclick="count()">{{players.player_5}}</input>
+		<input type="submit" onclick="check()" value="save" /> 
+	</form>
+</body>
+</html>

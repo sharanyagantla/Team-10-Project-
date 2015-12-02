@@ -7,7 +7,9 @@ body {
 h2 {
 	position: absolute;
 	top:-3px;
-	left:220px;
+	left:230px;
+	color: white;
+	font-style: bold;
 }
 
 #usernametext {
@@ -15,6 +17,7 @@ h2 {
 	top:70px;
 	left:50px;
 	font-size: 130%;
+
 }
 
 

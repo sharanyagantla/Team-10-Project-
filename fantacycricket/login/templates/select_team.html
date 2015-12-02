@@ -45,14 +45,14 @@ h2{
 
 #buttontype {
 	position: absolute;
-	top:550px;
+	top:280px;
 	left:400px;
 	color: red;
 }
 
 #sel_players {
 	position: absolute;
-	top:50px;
+	top:10px;
 	left:830px;
 	color: red;
 }
@@ -66,10 +66,23 @@ h2{
 
 #leaderboard{
 	position: absolute;
-	top:250px;
+	top:450px;
 	left:830px;
 	color: red;
+}
 
+#pp {
+	position: absolute;
+	top:280px;
+	left:10px;
+	color: red;
+}
+
+#tp {
+	position: absolute;
+	top:440px;
+	left:100px;
+	color: red;
 }
 
 body {
@@ -146,7 +159,7 @@ body {
 		</p>
 		</div>
 
-	<input type="submit" onClick="return check()" value="Submit" id = "buttontype">
+	<input type="submit" onClick="return check()" value="Save Team" id = "buttontype">
 	</form>
 
 	<h5>Select players from the below list:</h5>
@@ -154,13 +167,14 @@ body {
 	<div  id = "sel_players"> 
 	<p>Selected Players are:</p>
 		<p> 
-		    <li> {{ sel_player1.player_name }} --- {{p1_points}} </li>
-		    <li> {{ sel_player2.player_name }} --- {{p2_points}}</li>
-		    <li> {{ sel_player3.player_name }} --- {{p3_points}}</li>
-		    <li> {{ sel_player4.player_name }} --- {{p4_points}}</li>
-		    <li> {{ sel_player5.player_name }} --- {{p5_points}}</li>
-		    <li> Total points --- {{tot_points}}</li>
-		</p>
+		<a><img src="{{ sel_player1.img.url }}" width = 100px height = 100px/>  {{p1_points}}  </a>
+	    <a> <img src="{{ sel_player2.img.url }}" width = 100px height = 100px/>  {{p2_points}}</a>
+	    <a> <img src="{{ sel_player3.img.url }}" width = 100px height = 100px/>  {{p3_points}}</a>
+		<p></p>
+	    <a> <img src="{{ sel_player4.img.url }}" width = 100px height = 100px/>  {{p4_points}}</a>
+	    <a> <img src="{{ sel_player5.img.url }}" width = 100px height = 100px/>  {{p5_points}}</a>
+	    <p id = "pp"> 	power player <img src="{{ sel_pp.img.url }}" width = 125px height = 125px/> {{pp_points}} </p>
+	    <a id = "tp"> Total points --- {{tot_points}}</a>
 	</div>
 
 	<div id = "h4">
