@@ -53,7 +53,7 @@ h2{
 #sel_players {
 	position: absolute;
 	top:50px;
-	left:1050px;
+	left:830px;
 	color: red;
 }
 
@@ -62,6 +62,14 @@ h2{
 	top:-9px;
 	right:50px;
 	color: red;
+}
+
+#leaderboard{
+	position: absolute;
+	top:250px;
+	left:830px;
+	color: red;
+
 }
 
 body {
@@ -86,6 +94,15 @@ body {
 			 return false;
 		}
 	}
+	function checkflag(f) {
+		if(f == 1) {
+			var radios = document.getElementsByName('playerr');
+			for (var i = 0; i< radios.length;  i++) {
+		   		 radios[i].disabled = true;
+				}
+			document.getElementById("buttontype").disabled = true;
+		}
+	}
 	function check() {
 		var inputElems = document.getElementsByTagName("input"),
 		count = 0;
@@ -101,7 +118,7 @@ body {
 	</script>
 </head>
 
-<body>
+<body onload="checkflag({{test}})">
 	<h2>{{full_name}} selects {{match_name}} </h2>
 
 	<div id = "team1_h">
@@ -148,6 +165,32 @@ body {
 
 	<div id = "h4">
 		<h3><a href="/accounts/logout/">Logout</a></h3>
+	</div>
+
+	<div id = "leaderboard">
+		<h4>Leader Board for current Match</h4>
+		{% if test == 1 %}
+			{% if leader_length >= 1 %}
+				<form action="{% url 'userTeam' lbp1.id key %}">
+				<a> {{lbp1}} </a> <input  type="submit" value="view his team"></form>
+			{% endif %}
+			{% if leader_length >= 2 %}
+				<form action="{% url 'userTeam' lbp2.id key %}">
+				<a> {{lbp2}} </a> <input  type="submit" value="view his team"></form>
+			{% endif %}
+			{% if leader_length >= 3 %}
+				<form action="{% url 'userTeam' lbp3.id key %}">
+				<a> {{lbp3}} </a> <input  type="submit" value="view his team"></form>
+			{% endif %}
+			{% if leader_length >= 4 %}
+				<form action="{% url 'userTeam' lbp4.id key %}">
+				<a> {{lbp4}} </a> <input  type="submit" value="view his team"></form>
+			{% endif %}
+			{% if leader_length >= 5 %}
+				<form action="{% url 'userTeam' lbp5.id key %}">
+				<a> {{lbp5}} </a> <input  type="submit" value="view his team"></form>
+			{% endif %}
+		{% endif %}
 	</div>
 </body>
 </html>

@@ -87,8 +87,8 @@
 
     <div id = "userList">
     <p > 
-    	{% for object in user_names %}
-             <li>{{ object.username }} </li>
+      {% for object in user_names %}
+             <li>{{ object }} -- {{object.full_points}} </li>
         {% endfor %}
     </p>
     </div>
@@ -98,7 +98,7 @@
     </div>
     <div id = "matches">
     <p> 
-    	{% for object in match_name %}
+      {% for object in match_name %}
              <li>{{ object.match_name }} -- {{object.pub_date }}</li>
         {% endfor %}
     </p>	

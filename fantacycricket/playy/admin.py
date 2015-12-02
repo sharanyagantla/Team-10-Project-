@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Player, Team , Match ,AsignPoints , UserProfile 
+from .models import Player, Team , Match ,AsignPoints , UserProfile , Points
 
 admin.site.register(Player)
 admin.site.register(UserProfile)
@@ -30,6 +30,7 @@ class MatchAdmin(admin.ModelAdmin):
 
 admin.site.register(Match, MatchAdmin)
 admin.site.register(AsignPoints)
+admin.site.register(Points)
 
 
 

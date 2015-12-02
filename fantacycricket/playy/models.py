@@ -5,10 +5,6 @@ from django.utils import timezone
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
-from django.contrib.auth.models import ( BaseUserManager, AbstractBaseUser )
-
 # Create your models here.
 
 class Team(models.Model):
@@ -35,13 +31,11 @@ class Player(models.Model) :
 
 class AsignPoints(models.Model ) :
 	match = models.ForeignKey('Match')
-	team = models.ForeignKey('Team')
-	q = Match.objects.all()
 	playername = models.ForeignKey('Player')
 	points = models.IntegerField(default = 0)
 
 	def __str__(self):
-		return self.playername.player_name +" for "+ self.match.match_name
+		return self.playername.player_name 
 
 
 class UserProfile(models.Model):
@@ -59,3 +53,9 @@ class UserProfile(models.Model):
 	def __str__(self):
 		return self.user.username +" for "+ self.match.match_name
 
+class Points(models.Model):
+	user = models.ForeignKey(User)
+	full_points = models.IntegerField(default = 0)
+
+	def __str__(self):
+		return self.user.username

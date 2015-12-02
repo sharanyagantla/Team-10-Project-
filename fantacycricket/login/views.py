@@ -4,14 +4,18 @@ from django.http import HttpResponseRedirect
 from django.core.context_processors import csrf
 from django.contrib import auth
 # from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
 from django.http import HttpResponse
 from forms import MyRegistrationForm
-from playy.models import Match, Team , Player  , UserProfile , AsignPoints
+from playy.models import Match, Team , Player  , UserProfile , AsignPoints , Points
+from django.contrib.auth.models import User
 from django.template import RequestContext, loader
 from django.shortcuts import get_object_or_404, render ,redirect
 from django.core.urlresolvers import reverse
+from datetime import datetime 
+from django.utils import timezone
 
+def index(request):
+    return render_to_response('homepage.html', context_instance=RequestContext(request))
 
 def login(request):
 	c= {}
@@ -19,7 +23,7 @@ def login(request):
 	q = Match.objects.all()
 	# return render_to_response('login.html' , {c , 'match_name': q[0].match_name }  )
 	t = loader.get_template('login.html')
-	r = RequestContext(request, {'match_name': q  , 'user_names' : User.objects.all()[:5]} )
+	r = RequestContext(request, {'match_name': q  , 'user_names' : Points.objects.all().extra(order_by = ['-full_points'])[:5]} )
 	return HttpResponse(t.render(r), content_type=c)
 
 
@@ -42,7 +46,11 @@ def invalied_login(request):
 
 def loggedin(request):
 	q = Match.objects.all()
-	return render_to_response('loggedin.html' , {'full_name' : request.user.username , 'matchs_name' :q})
+	try:
+		return render_to_response('loggedin.html' , {'full_name' : request.user.username , 'matchs_name' :q , 
+     'curr_points' :  Points.objects.all().get(user_id = request.user.id).full_points })
+	except :
+		return render_to_response('loggedin.html' , {'full_name' : request.user.username , 'matchs_name' :q ,'curr_points' : 0})
 
 def logout(request):
 	auth.logout(request)
@@ -57,7 +65,6 @@ def register_user(request):
 		else:
 			return render_to_response('registerpasswordsmatch_alert.html')
 			
-
 	args = {}
 	args.update(csrf(request))
 
@@ -75,8 +82,44 @@ def select_team(request , pk):
 	a= AsignPoints.objects.all()
 	t = Team.objects.all()
 	userid = request.user.id
+	today = timezone.now()
+	if(m.get(id = pk).pub_date < today) :
+		flag = 1
+	else :
+		flag = 0
+	if(flag == 1):
+		lbp = UserProfile.objects.all().filter(match_id = pk).extra(order_by = ['-total_points'])[:5]
+	else:
+		lbp = []
+	leader_length = len(lbp)
+	if len(lbp) >=1 :
+		lbp1 = lbp[0]
+	else :
+		lbp1 = None
+	if len(lbp) >=2 :
+		lbp2 = lbp[1]
+	else :
+		lbp2 = None
+	if len(lbp) >=3 :
+		lbp3 = lbp[2]
+	else :
+		lbp3 = None
+	if len(lbp) >=4 :
+		lbp4 = lbp[3]
+	else :
+		lbp4 = None
+	if len(lbp) >=5 :
+		lbp5 = lbp[4]
+	else :
+		lbp5 = None
 	template = loader.get_template('select_team.html')
 	c = {p}
+	if request.user.is_superuser: 
+		template3 = loader.get_template('assignpoints.html')
+		r5 = RequestContext(request, {'Team_1_players' : p.filter(team_id = m.get(id = pk).team_1_id) ,
+		'Team_2_players' : p.filter(team_id = m.get(id = pk).team_2_id), 'key' : pk,  'test' : flag , 'lbp1' : lbp1 
+		, 'lbp2' : lbp2 ,'lbp3' : lbp3 ,'lbp4' : lbp4,'lbp5' : lbp5 , 'leader_length' :leader_length})
+		return HttpResponse(template3.render(r5), content_type=c)
 	try :
 		u = UserProfile.objects.all()
 		all_sel_players = u.filter(user_id = userid).get(match_id = pk)
@@ -108,7 +151,8 @@ def select_team(request , pk):
             'sel_player3' : all_sel_players.player_3 ,
             'sel_player4' : all_sel_players.player_4 ,
             'sel_player5' : all_sel_players.player_5 , 
-            'tot_points' : total_points, 'key': pk, }  )	
+            'tot_points' : total_points, 'key': pk,  'test' : flag  ,  'lbp1' : lbp1 
+		, 'lbp2' : lbp2 ,'lbp3' : lbp3 ,'lbp4' : lbp4,'lbp5' : lbp5 , 'leader_length' :leader_length })	
 			return HttpResponse(template.render(r), content_type=c)
 		except AsignPoints.DoesNotExist :
 			r3 = RequestContext(request, {'full_name' : request.user.username ,
@@ -125,14 +169,15 @@ def select_team(request , pk):
             'sel_player2' : all_sel_players.player_2 ,
             'sel_player3' : all_sel_players.player_3 ,
             'sel_player4' : all_sel_players.player_4 ,
-            'sel_player5' : all_sel_players.player_5 , 'key': pk }  )
+            'sel_player5' : all_sel_players.player_5 , 'key': pk ,'test' : flag }  )
 			return HttpResponse(template.render(r3), content_type=c)
 	except UserProfile.DoesNotExist :
 		r2  = RequestContext(request, {'full_name' : request.user.username ,
             'match_name' : m.get(id = pk) , 'Team_1_name' : t.get(id = m.get(id = pk).team_1_id) ,
             'Team_2_name' : t.get(id = m.get(id = pk).team_2_id) , 
             'Team_1_players' : p.filter(team_id = m.get(id = pk).team_1_id) , 
-            'Team_2_players' : p.filter(team_id = m.get(id = pk).team_2_id) , 'key' : pk } )
+            'Team_2_players' : p.filter(team_id = m.get(id = pk).team_2_id) , 'key' : pk ,'test' : flag , 'lbp1' : lbp1 
+		, 'lbp2' : lbp2 ,'lbp3' : lbp3 ,'lbp4' : lbp4,'lbp5' : lbp5 , 'leader_length' :leader_length} )
 		return HttpResponse(template.render(r2), content_type=c)
 
 
@@ -158,8 +203,51 @@ def vote(request , pk):
 			return HttpResponseRedirect(reverse('selectTeam', args=(pk,)))
 	return HttpResponseRedirect(reverse('selectTeam', args=(pk,)))
 
-def index(request):
-    return render_to_response('homepage.html', context_instance=RequestContext(request))
+def savepoints(request , pk) :
+	all_points = request.POST.getlist('playerPoints')
+	playerid = request.POST.getlist('playerid')
+	for i in xrange(len(playerid)):
+		try :
+			AsignPoints.objects.all().filter(match_id = pk).get(playername_id = playerid[i])
+			AsignPoints.objects.all().filter(match_id = pk).filter(playername_id = playerid[i]).update( points = all_points[i])
+		except:
+			AsignPoints.objects.create(match_id = pk , playername_id = playerid[i] , points = all_points[i])
+	up = UserProfile.objects.all()
+	u = User.objects.all()
+	assignpts = AsignPoints.objects.all().filter(match_id = pk)
+	for uid in u:
+		try :
+			all_sel_players = up.filter(user_id = uid.id).get(match_id = pk)
+			p1id = all_sel_players.player_1_id
+			p2id = all_sel_players.player_2_id
+			p3id = all_sel_players.player_3_id
+			p4id = all_sel_players.player_4_id
+			p5id = all_sel_players.player_5_id
+			p1_points = assignpts.get(playername_id = p1id).points
+			p2_points = assignpts.get(playername_id = p2id).points
+			p3_points = assignpts.get(playername_id = p3id).points
+			p4_points = assignpts.get(playername_id = p4id).points
+			p5_points = assignpts.get(playername_id = p5id).points
+			total_points = p1_points + p2_points + p3_points + p4_points + p5_points 
+			up.filter(user_id = uid.id).filter(match_id = pk).update(total_points = total_points)
+			try :
+				Points.objects.all().filter(user_id = uid.id ).update(full_points = total_points+Points.objects.all().get(user_id = uid.id).full_points )
+			except :
+				Points.objects.create( user_id = uid.id , full_points = total_points )
+		except :
+			continue
+	return HttpResponse("sucess")
 
-
+def userTeam(request , pk ,mid):
+	players_list =  UserProfile.objects.all().get(id = pk)
+	user_profile = AsignPoints.objects.all().filter(match_id = mid).get(playername_id = players_list.player_1_id)
+	p1_points = AsignPoints.objects.all().filter(match_id = mid).get(playername_id = players_list.player_1_id).points
+	p2_points = AsignPoints.objects.all().filter(match_id = mid).get(playername_id = players_list.player_2_id).points
+	p3_points = AsignPoints.objects.all().filter(match_id = mid).get(playername_id = players_list.player_3_id).points
+	p4_points = AsignPoints.objects.all().filter(match_id = mid).get(playername_id = players_list.player_4_id).points
+	p5_points = AsignPoints.objects.all().filter(match_id = mid).get(playername_id = players_list.player_5_id).points
+	total = p1_points + p2_points + p3_points + p4_points + p5_points
+	return render_to_response('userTeam.html' , {'p1_points' : p1_points , 'p2_points' : p2_points , 'p3_points' : p3_points,
+	'p4_points' : p4_points,'p5_points' : p5_points , 'p1' : players_list.player_1 , 'p2' : players_list.player_2 ,
+	'p3' : players_list.player_3 , 'p4' : players_list.player_4 , 'p5' : players_list.player_5 ,'total' :total , 'profile' :user_profile })
 

@@ -2,9 +2,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<SCRIPT type="text/javascript">
+    window.history.forward();
+    function noBack() { window.history.forward(); }
+	</SCRIPT>
 </head>
-<body>
+
+<body onload="noBack();"
+    onpageshow="if (event.persisted) noBack();" onunload="">
 you are logged out!
 <p>click <a href="/accounts/login/">here</a> to login again </p>
 </body>

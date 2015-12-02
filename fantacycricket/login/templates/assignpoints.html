@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form action = "{% url 'assignpoints' key %}" method="post">
+	{% csrf_token %}
+		<h1>team1</h1>
+		<p id = "team1"> 
+			{% for player in Team_1_players %}
+				<p> <input name= "playerid" value = "{{player.id}}"  ;>  {{ player.player_name }} <input name= "playerPoints" value = ""  ;></p>
+			{% endfor %}
+		</p>
+		<h2>team2</h2>
+		<p id = "team2"> 
+			{% for player in Team_2_players %}
+				<p> <input name= "playerid" value = "{{player.id}}"  ;> {{ player.player_name }}  <input name= "playerPoints" value = "" ;></p>
+			{% endfor %}
+		</p>
+		<input type="submit"  value="Submit">
+	</form>
+</body>
+</html>
