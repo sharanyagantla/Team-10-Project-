@@ -10,9 +10,9 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesomelogin/css/font-awesome.min.css" />
 
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="jslogin/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 
 </head>
@@ -29,15 +29,15 @@
  	{% endif %}
 <div style="display:flex">
 <div class="container">
- 	<div>
+ 	<div style="align:centre">
  	    <h1>Login</h1>
 	        <form action="/accounts/auth/" method="post" class="col-md-12"> {% csrf_token %} 
             <div class="form-group">
-    	    	<label for= "username" >User Name:</label>
+    	    	<label for= "username" >UserName:</label>
     	    	<input type="text" name="username" value="" id="username">
             </div>
             <div class="form-group">
-    	    	<label for="password">Password:</label>
+    	    	<label for="password"> Password : </label>
     	    	<input type="password" name="password" value="" id="password">
             </div>
             <div class="form-group">

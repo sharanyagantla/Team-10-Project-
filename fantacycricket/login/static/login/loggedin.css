@@ -16,7 +16,8 @@ body {
 	position: absolute;
 	top:50px;
 	right:760px;
-	color: red;
+	color: #FF4500;
+	font-weight: bolder;
 }
 
 a {

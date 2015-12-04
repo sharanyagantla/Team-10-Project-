@@ -24,22 +24,26 @@ def login(request):
 	c= {}
 	c.update(csrf(request))
 	q = Match.objects.all()
-	# return render_to_response('login.html' , {c , 'match_name': q[0].match_name }  )
 	t = loader.get_template('login.html')
 	r = RequestContext(request, {'match_name': q  , 'user_names' : Points.objects.all().extra(order_by = ['-full_points'])[:5]} )
 	return HttpResponse(t.render(r), content_type=c)
 
 
 def auth_view(request):
-	username = request.POST.get('username' , '')
-	password = request.POST.get('password' , '')
-	user = auth.authenticate(username=username , password = password)
-
-	if user is not None :
-		auth.login(request, user)
-		return HttpResponseRedirect('/accounts/loggedin/')
-	else :
-		return HttpResponseRedirect('/accounts/invalid/')
+	if request.method == 'POST':
+		email = request.POST.get('email' ,False)
+		username = request.POST.get('username' , '')
+		password = request.POST.get('password' , '')
+		user = auth.authenticate(username=username , password = password)
+		if "username" not in request.session or (username == request.session["username"]) :
+			if user is not None :
+				auth.login(request, user)
+				request.session["username"] = username
+				return HttpResponseRedirect('/accounts/loggedin/')
+			else :
+				return HttpResponseRedirect('/accounts/invalid/')
+		else :
+			return HttpResponse("user already logged in")
 		
 		
 
@@ -48,15 +52,21 @@ def invalied_login(request):
 
 
 def loggedin(request):
-	q = Match.objects.all()
-	try:
-		return render_to_response('loggedin.html' , {'full_name' : request.user.username , 'matchs_name' :q , 
-     'curr_points' :  Points.objects.all().get(user_id = request.user.id).full_points })
-	except :
-		return render_to_response('loggedin.html' , {'full_name' : request.user.username , 'matchs_name' :q ,'curr_points' : 0})
+	if request.user.id is not None :
+		q = Match.objects.all()
+		try:
+			return render_to_response('loggedin.html' , {'full_name' : request.user.username , 'matchs_name' :q , 
+	     'curr_points' :  Points.objects.all().get(user_id = request.user.id).full_points })
+		except :
+			return render_to_response('loggedin.html' , {'full_name' : request.user.username , 'matchs_name' :q ,'curr_points' : 0})
+	else :
+		return login(request)
+
 
 def logout(request):
 	auth.logout(request)
+	if "username" in request.session:
+		del request.session["username"]
 	return render_to_response('logout.html')
 
 def register_user(request):
@@ -229,7 +239,10 @@ def savepoints(request , pk) :
 			AsignPoints.objects.all().filter(match_id = pk).get(playername_id = playerid[i])
 			AsignPoints.objects.all().filter(match_id = pk).filter(playername_id = playerid[i]).update( points = all_points[i])
 		except:
-			AsignPoints.objects.create(match_id = pk , playername_id = playerid[i] , points = all_points[i])
+			try:
+				AsignPoints.objects.create(match_id = pk , playername_id = playerid[i] , points = all_points[i])
+			except:
+				continue
 	up = UserProfile.objects.all()
 	u = User.objects.all()
 	assignpts = AsignPoints.objects.all().filter(match_id = pk)

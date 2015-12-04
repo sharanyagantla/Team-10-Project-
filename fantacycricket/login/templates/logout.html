@@ -2,20 +2,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'login/loggedin.css' %}" />
+	<meta charset="utf-8" />
+    <title>User Login / Sign Up </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-<style>
-	
-	body {
-		background-image: url("bowled.jpeg");
-		background-repeat:no-repeat;
-		background-size:cover;
-	}
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesomelogin/css/font-awesome.min.css" />
 
-</style>
+    <script type="text/javascript" src="jslogin/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
-you are logged out!
-<p>click <a href="/accounts/login/">here</a> to login again.... </p>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'login/logout.css' %}" />
+<div class = "container">
+<h1 style="color:OrangeRed"> You are logged out! </h1>
+<form action="/accounts/login/">
+    <button type="submit" class="btn btn-danger">Click to Login Again</button>
+</form>
+<!-- <p>click <a href="/accounts/login/">here</a> to login again</p> -->
+</div>
 </body>
 </html>

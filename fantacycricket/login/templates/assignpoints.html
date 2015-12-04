@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
@@ -19,6 +19,61 @@
 			{% endfor %}
 		</p>
 		<input type="submit"  value="Submit">
+	</form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form action = "{% url 'assignpoints' key %}" method="post">
+	<h1>-------------update points-------------------</h1>
+	{% csrf_token %}
+	<div style="display:flex">
+		<div>
+			<h2>team1</h2>
+			<p id = "team1"> 
+				{% for player in Team_1_players %}
+					<p> <input name= "playerid" value = "{{player.id}}"  size="3" readonly>  {{ player.player_name }} <input name= "playerPoints" value = ""  ;></p>
+				{% endfor %}
+			</p>
+		</div>
+		<div>	
+			<h3>team2</h3>
+			<p id = "team2"> 
+				{% for player in Team_2_players %}
+					<p> <input name= "playerid" value = "{{player.id}}" size="3" readonly> {{ player.player_name }}  <input name= "playerPoints" value = "" ;></p>
+				{% endfor %}
+			</p>
+		</div>
+	</div>
+		<input type="submit"  value="update points">
+	</form>
+	<form action = "{% url 'assignpointsfinal' key %}" method="post">
+	<h1>-------------save points-------------------</h1>
+	{% csrf_token %}
+		<div style="display:flex">
+			<div>
+				<h2>team1</h2>
+				<p id = "team1"> 
+					{% for player in Team_1_players %}
+						<p> <input name= "playeridf" value = "{{player.id}}"  size="3" readonly >  {{ player.player_name }} <input name= "playerPointsf" value = ""  required></p>
+					{% endfor %}
+				</p>
+			</div>
+			<div>
+				<h3>team2</h3>
+				<p id = "team2"> 
+					{% for player in Team_2_players %}
+						<p> <input name= "playeridf" value = "{{player.id}}"  size="3" readonly > {{ player.player_name }}  <input name= "playerPointsf" value = "" required></p>
+					{% endfor %}
+				</p>
+			</div>
+		</div>
+		<input type="submit"  value="save points">
 	</form>
 </body>
 </html>

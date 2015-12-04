@@ -10,13 +10,87 @@
 	}
 	</style>
 </head>
-
 <body>
-	<p> {{p1}} -- 	{{p1_points}} </p>
-	<p> {{p2}} -- 	{{p2_points}} </p>
-	<p> {{p3}} -- 	{{p3_points}} </p>
-	<p> {{p4}} -- 	{{p4_points}} </p>
-	<p> {{p5}} -- 	{{p5_points}} </p>
-	<p> Total --	{{total}} </p>
+
+	<div style = "display:flex">
+			<div style = "margin-right:2%">
+				<div>
+					<a style="margin:2%"><img src="{{ p1.img.url }}" width = 100px height = 100px/></a>
+				</div>
+				<div>
+					<center> {{p1.player_name}} </center>
+				</div>
+				<div>
+				   <center>	{{p1_points}}</center>
+				</div>
+			</div>
+			<div style = "margin-right:2%">
+				<div>
+			    	<a style="margin:2%"> <img src="{{ p2.img.url }}" width = 100px height = 100px/></a>
+			    </div>
+			    <div>
+					<center> {{p2.player_name}} </center>
+				</div>
+				<div>
+				   <center>	{{p2_points}}</center>
+				</div>
+			</div>
+			<div style = "margin-right:2%">
+			    <div>
+			    	<a style="margin:2%"> <img src="{{ p3.img.url }}" width = 100px height = 100px/></a>
+			    </div>
+			   <div>
+					<center> {{p3.player_name}} </center>
+				</div>
+				<div>
+				   <center>	{{p3_points}}</center>
+				</div>
+			</div>
+			<div style = "margin-right:2%">    
+				<div>	
+					<a style="margin:2%"> <img src="{{ p4.img.url }}" width = 100px height = 100px/> </a>
+				</div>
+				<div>
+					<center> {{p4.player_name}} </center>
+				</div>
+				<div>
+				   <center>	{{p4_points}}</center>
+				</div>
+			</div style = "margin-right:2%">
+			<div>	
+			    <div>	
+			    	<a style="margin:2%"> <img src="{{ p5.img.url }}" width = 100px height = 100px/> </a>
+			    </div>
+			    <div>
+					<center> {{p5.player_name}} </center>
+				</div>
+				<div>
+				   <center>	{{p5_points}}</center>
+				</div>
+				
+			</div>
+		</div>
+			
+		
+			<div>
+				<div>
+					<p> Power Player :</p>
+				</div>
+				<div style="display:flex"> 
+					<center><img src="{{ pp.img.url }}" width = 125px height = 125px/> </center>
+					<div>
+						<center> <a  style="font-size:200%;margin-left:60px"> Total points : {{total}}</a> </center>
+					</div>
+				</div>
+				<div >
+					{{pp.player_name}} 
+				</div>
+				<div style="margin-left:50px">
+				  {{pp_points}}
+				</div>
+			</div>
+		</div>	
+	
+
 </body>
 </html>

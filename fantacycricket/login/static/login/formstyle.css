@@ -2,9 +2,10 @@ body {
 	background-image: url("fantasy.jpg");
 	background-repeat:no-repeat;
 	background-size:cover;
+	text-align: center;
 }
 
-h2 {
+/*h2 {
 	position: absolute;
 	top:-3px;
 	left:230px;
@@ -15,7 +16,7 @@ h2 {
 #usernametext {
 	position: absolute;
 	top:70px;
-	left:50px;
+	left:-20px;
 	font-size: 130%;
 
 }
@@ -98,4 +99,4 @@ h2 {
 	left:100px;	
 	width: 20em;  
 	height: 2em;
-}
+}*/

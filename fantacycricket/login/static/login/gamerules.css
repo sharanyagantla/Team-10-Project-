@@ -82,10 +82,12 @@ html,
 body {
     width: 100%;
     height: 100%;
+    /*background-color: #0000FF;*/
 }
 
 body {
     font-family: Merriweather,'Helvetica Neue',Arial,sans-serif;
+    /*background-color: #0000FF;*/
 }
 
 hr {

@@ -234,7 +234,7 @@ header .header-content {
     text-align: center;
     color: orange;
     background-color: transparent;
-    background-image: url("header.jpg");
+    /*background-image: url("header.jpg");*/
     background-size: 100%;
     
 

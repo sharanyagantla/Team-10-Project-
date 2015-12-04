@@ -1,0 +1,5 @@
+body {
+    background-image: url("invalid.jpg");
+    background-repeat:no-repeat;
+    background-size:100%;
+}

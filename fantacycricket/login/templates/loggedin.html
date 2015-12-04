@@ -1,3 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>User Login / Sign Up </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesomelogin/css/font-awesome.min.css" />
+
+    <script type="text/javascript" src="jslogin/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+</head>
 
 
 {% extends "base.html" %}
@@ -7,10 +25,11 @@
 	{% load staticfiles %}
 	<link rel="stylesheet" type="text/css" href="{% static 'login/loggedin.css' %}" />
 	
-	<body>
+	<body style="font-size:90%">
 		<div id = "p">
-		<h3> Hi {{full_name}} !!!!!!!!!</h3>
-		<h2> Total Points -- {{curr_points}} </h2>
+		<br>
+		<h4> Hi {{full_name}} !!!!!!!!!</h4>
+		<h2 style="margin-top:330px"> Total Points -- {{curr_points}} </h2>
 		</div>
 
 		<div id = "h4">
@@ -19,9 +38,9 @@
 
 		<div id = "matches">
 		<h1>Matches</h1>
-		<h4> 
+		<h4 style="color:Green"> 
 	    	{% for object in matchs_name %}
-	             <li><a href="{% url 'selectTeam' object.id %}"> {{object.id}}--{{ object.match_name }} -- {{object.pub_date }}</li>
+	             <u><p><a href="{% url 'selectTeam' object.id %}"> {{ object.match_name }} -- {{object.pub_date }}</p></u>
 	        {% endfor %}
 	    </h4>
 	    </div>

@@ -1,46 +1,55 @@
 <html>
 <head>
 <style>
+/*body {
+		background-image: url("header.jpg");
+		background-repeat:no-repeat;
+		background-size:cover;
+	}*/
 
 #team1_h{
 	position: absolute;
 	top:70px;
-	left:250px;
-	color: red;
+	left:20px;
+	color: #FF4500;
+	text-align: left;
+	font-size: 125%;
 }
 
 #team1{
 	position: absolute;
 	top:110px;
-	left:250px;
-	color: red;
+	left:20px;
+	color: black;
+	text-align: left;
 }
 
 #team2_h{
 	position: absolute;
 	top:70px;
-	left:550px;
-	color: red;	
+	left:250px;
+	color: #FF4500;
+	font-size: 125%;	
 }
 
 #team2{
 	position: absolute;
 	top:110px;
-	left:550px;
-	color: red;	
+	left:250px;
+	color: black;	
 }
 
 h5{
 	position: absolute;
 	top:30px;
-	left:350px;
+	left:80px;
 
 }
 
 h2{
 	position: absolute;
 	top:10px;
-	left:250px;
+	left:30px;
 }
 
 #buttontype {
@@ -53,8 +62,17 @@ h2{
 #sel_players {
 	position: absolute;
 	top:10px;
-	left:830px;
+	left:550px;
+	color: #990066;
+	
+}
+
+#sel_playersnames {
+	position: absolute;
+	top:180px;
+	left:552px;
 	color: red;
+	right: -10px;
 }
 
 #h4{
@@ -66,9 +84,10 @@ h2{
 
 #leaderboard{
 	position: absolute;
-	top:450px;
-	left:830px;
-	color: red;
+	top:400px;
+	left:530px;
+	color: black;
+	font-size: 125%;
 }
 
 #pp {
@@ -79,15 +98,11 @@ h2{
 }
 
 #tp {
-	position: absolute;
-	top:440px;
-	left:100px;
-	color: red;
+	/*position: absolute;*/
+	color: black;
 }
 
-body {
-    background-color: #cccccc;
-}
+
 
 </style>
 	<script type="text/javascript">
@@ -132,11 +147,14 @@ body {
 </head>
 
 <body onload="checkflag({{test}})">
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'login/selectteam.css' %}" />
 	<h2>{{full_name}} selects {{match_name}} </h2>
-
+<div>
 	<div id = "team1_h">
 	<h4> {{Team_1_name}} </h4>
 	</div>
+
 	<form name = 'joe' action = "{% url 'vote' key %}" method="post">
 	{% csrf_token %}
 		<div id = "team1">
@@ -159,22 +177,94 @@ body {
 		</p>
 		</div>
 
-	<input type="submit" onClick="return check()" value="Save Team" id = "buttontype">
+	<input style="outline: none; border-color: #9ecaed; box-shadow: 0 0 10px #9ecaed; width:8em; height:4em" type="submit" onClick="return check()" value="Save Team" id = "buttontype" >
 	</form>
-
+</div>
+	<p></p>
 	<h5>Select players from the below list:</h5>
-
+	<!-- {{p1_points}} {{sel_player1.player_name}}   -->
+	 <!-- {{pp_points}}  -->
 	<div  id = "sel_players"> 
-	<p>Selected Players are:</p>
-		<p> 
-		<a><img src="{{ sel_player1.img.url }}" width = 100px height = 100px/>  {{p1_points}}  </a>
-	    <a> <img src="{{ sel_player2.img.url }}" width = 100px height = 100px/>  {{p2_points}}</a>
-	    <a> <img src="{{ sel_player3.img.url }}" width = 100px height = 100px/>  {{p3_points}}</a>
-		<p></p>
-	    <a> <img src="{{ sel_player4.img.url }}" width = 100px height = 100px/>  {{p4_points}}</a>
-	    <a> <img src="{{ sel_player5.img.url }}" width = 100px height = 100px/>  {{p5_points}}</a>
-	    <p id = "pp"> 	power player <img src="{{ sel_pp.img.url }}" width = 125px height = 125px/> {{pp_points}} </p>
-	    <a id = "tp"> Total points --- {{tot_points}}</a>
+		<p>Selected Players : </p>
+		<div style = "display:flex">
+			<div style = "margin-right:2%">
+				<div>
+					<a style="margin:2%"><img src="{{ sel_player1.img.url }}" width = 100px height = 100px/></a>
+				</div>
+				<div>
+					<center> {{sel_player1.player_name}} </center>
+				</div>
+				<div>
+				   <center>	{{p1_points}}</center>
+				</div>
+			</div>
+			<div style = "margin-right:2%">
+				<div>
+			    	<a style="margin:2%"> <img src="{{ sel_player2.img.url }}" width = 100px height = 100px/></a>
+			    </div>
+			    <div>
+					<center> {{sel_player2.player_name}} </center>
+				</div>
+				<div>
+				   <center>	{{p2_points}}</center>
+				</div>
+			</div>
+			<div style = "margin-right:2%">
+			    <div>
+			    	<a style="margin:2%"> <img src="{{ sel_player3.img.url }}" width = 100px height = 100px/></a>
+			    </div>
+			   <div>
+					<center> {{sel_player3.player_name}} </center>
+				</div>
+				<div>
+				   <center>	{{p3_points}}</center>
+				</div>
+			</div>
+			<div style = "margin-right:2%">    
+				<div>	
+					<a style="margin:2%"> <img src="{{ sel_player4.img.url }}" width = 100px height = 100px/> </a>
+				</div>
+				<div>
+					<center> {{sel_player4.player_name}} </center>
+				</div>
+				<div>
+				   <center>	{{p4_points}}</center>
+				</div>
+			</div style = "margin-right:2%">
+			<div>	
+			    <div>	
+			    	<a style="margin:2%"> <img src="{{ sel_player5.img.url }}" width = 100px height = 100px/> </a>
+			    </div>
+			    <div>
+					<center> {{sel_player5.player_name}} </center>
+				</div>
+				<div>
+				   <center>	{{p5_points}}</center>
+				</div>
+			</div>
+		</div>
+		<br>
+		
+		<div style="position:absolute ; top:187px" >
+			<div>
+				<div>
+					<p> Power Player :</p>
+				</div>
+				<div style="display:flex"> 
+					<center><img src="{{ sel_pp.img.url }}" width = 125px height = 125px/> </center>
+					<div>
+						<center> <a id = "tp" style="font-size:200%;margin-left:60px"> Total points : {{tot_points}}</a> </center>
+					</div>
+				</div>
+				<div style="margin-left:10px ; color:black ; font-size:125%">
+					{{sel_pp.player_name}} 
+				</div>
+				<div style="margin-left:50px; color:black ; font-size:135%">
+				  {{pp_points}}
+				</div>
+			</div>
+		</div>
+		
 	</div>
 
 	<div id = "h4">

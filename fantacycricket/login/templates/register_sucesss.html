@@ -1,9 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
 
+    <meta charset="utf-8" />
+    <title>Registration Successful</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesomelogin/css/font-awesome.min.css" />
+
+    <script type="text/javascript" src="jslogin/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body>
 {% extends "base.html" %}
 
 {% block content %}
-
-	<h2>you have registered</h2>
-	<p>click <a href="/accounts/login/">here</a> to login </p>
-
+{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'login/success.css' %}" />
+<div class="container">
+	<h2 style="color:GhostWhite">You have been registered successfully !!!</h2>
+	<!-- <p>click <a href="/accounts/login/">here</a> to login </p> -->
+	<form action="/accounts/login/">
+		<button type="submit" class="btn btn-danger" style = "font-size:120%">login</button>
+	</form>
+</div>
 {% endblock %}
+
+</body>
+</html>
