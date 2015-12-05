@@ -22,6 +22,7 @@
 	left:20px;
 	color: black;
 	text-align: left;
+	font-weight: bold;
 }
 
 #team2_h{
@@ -37,6 +38,7 @@
 	top:110px;
 	left:250px;
 	color: black;	
+	font-weight: bold;
 }
 
 h5{
@@ -181,7 +183,7 @@ h2{
 	</form>
 </div>
 	<p></p>
-	<h5>Select players from the below list:</h5>
+	
 	<!-- {{p1_points}} {{sel_player1.player_name}}   -->
 	 <!-- {{pp_points}}  -->
 	<div  id = "sel_players"> 
@@ -272,7 +274,7 @@ h2{
 	</div>
 
 	<div id = "leaderboard">
-		<h4>Leader Board for current Match</h4>
+		<u><h4>Leader Board for current Match</h4></u>
 		{% if test == 1 %}
 			{% if leader_length >= 1 %}
 				<form action="{% url 'userTeam' lbp1.id key %}">

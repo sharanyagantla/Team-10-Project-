@@ -34,11 +34,11 @@
 	        <form action="/accounts/auth/" method="post" class="col-md-12"> {% csrf_token %} 
             <div class="form-group">
     	    	<label for= "username" >UserName:</label>
-    	    	<input type="text" name="username" value="" id="username">
+    	    	<input type="text" name="username" value="" id="username" required>
             </div>
             <div class="form-group">
     	    	<label for="password"> Password : </label>
-    	    	<input type="password" name="password" value="" id="password">
+    	    	<input type="password" name="password" value="" id="password" required>
             </div>
             <div class="form-group">
     	    	<button type="submit" class="btn btn-danger">Login</button>
@@ -86,9 +86,9 @@
 
     <button type="button" style = "font-size:150%" class="btn btn-danger" data-toggle="collapse" data-target="#demo">Click for Leader Board</button>
         <div id="demo" class="collapse">
-            <p id = "userList"> 
+            <p id = "userList" > 
                 {% for object in user_names %}
-                    <p  style = "font-weight:bold">{{ object }} -- {{object.full_points}} </p>
+                    <p  style = "font-weight:bold ; font-size:150%" >{{ object }} -- {{object.full_points}} </p>
                 {% endfor %}
             </p>
         </div>
@@ -101,7 +101,7 @@
         <div id="demo1" class="collapse">
             <p id = "matches" style = "font-color:150%"> 
                    {% for object in match_name %}
-                        <p  style = "font-weight:bold">{{ object.match_name }} -- {{object.pub_date }}</p>
+                        <p  style = "font-weight:bold ; font-size:150%">{{ object.match_name }} -- {{object.pub_date }}</p>
                     {% endfor %}
             </p>
         </div>  
